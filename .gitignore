@@ -1,0 +1,47 @@
+#-------------------------------------------------------------------------------
+# general things
+
+# python
+*.pyc
+__pycache__/
+.ipynb_checkpoints
+
+# word, excel backups
+*.xlk
+*.wbk
+
+# MATLAB
+*.m~
+._*
+~$*
+
+# other
+Thumbs.db
+#.git*
+
+#-------------------------------------------------------------------------------
+# specific things
+
+# short term plots
+plots/*
+
+# private reference documents
+ref/*
+
+# distribution stuff
+build/
+dist/
+*.egg-info/
+
+# documentation output
+sphinx/_build
+sphinx/_static
+sphinx/_template
+
+#links
+*.lnk
+
+#-------------------------------------------------------------------------------
+#exceptions
+
+!**/.keep
