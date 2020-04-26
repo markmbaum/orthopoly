@@ -1,0 +1,4 @@
+gegenbauer
+==========
+
+.. automodule:: orthopoly.gegenbauer

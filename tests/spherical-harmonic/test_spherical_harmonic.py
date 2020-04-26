@@ -5,7 +5,7 @@ from numpy import pi, sin, cos
 from scipy.integrate import dblquad
 import matplotlib.pyplot as plt
 
-sys.path.append(join('..', '..'))
+sys.path.insert(0, join('..', '..'))
 from orthopoly.spherical_harmonic import *
 
 #plt.style.use('dark_background')

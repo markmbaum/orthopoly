@@ -1,5 +1,5 @@
 r"""
-The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs with non-periodic boundary conditions. Chebyshev polynomials can be defined and evaluated in a number of ways. Here they are defined by
+The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs. Chebyshev polynomials (of the first kind) can be defined and evaluated in a number of ways. Here they are defined by
 
 .. math::   T_k(\hat{x}) = \cos(k \arccos(\hat{x})) \qquad \hat{x} \in [-1,1] \, ,
 
@@ -34,14 +34,12 @@ Tons of information on these and other methods can be found in these references:
     * Canuto, Claudio, et al. *Spectral methods*. Springer-Verlag, Berlin, 2006.
 """
 
-from numpy import pi, sin, cos, sqrt, arccos, array, arange, sort, all, prod, zeros
+from numpy import *
 from scipy.fftpack import dct, idct
 
+from .util import *
+
 __all__ = [
-    'xhat2x',
-    'x2xhat',
-    'xhat2theta',
-    'theta2xhat',
     'insert_points',
     'cheby_grid',
     'cheby',
@@ -65,19 +63,7 @@ __all__ = [
 ]
 
 #-------------------------------------------------------------------------------
-# coordinates and grid
-
-xhat2x = lambda xhat, xa, xb: (xhat + 1.0)*((xb - xa)/2.0) + xa
-xhat2x.__doc__ = r'Converts :math:`\hat{x}` coordinates in :math:`[-1,1]` to :math:`x` coordinates in :math:`[x_a,x_b]`'
-
-x2xhat = lambda x, xa, xb: 2.0*(x - xa)/(xb - xa) - 1.0
-x2xhat.__doc__ = r'Converts :math:`x` coordinates in :math:`[x_a,x_b]` to :math:`\hat{x}` coordinates in :math:`[-1,1]`'
-
-xhat2theta = lambda xhat: arccos(xhat)
-xhat2theta.__doc__ = r'Converts :math:`\hat{x}` coordinates in :math:`[-1,1]` to :math:`\theta` coordinates :math:`[\pi,0]`'
-
-theta2xhat = lambda xhat: arccos(xhat)
-theta2xhat.__doc__ = r'Converts :math:`\theta` coordinates in :math:`[\pi,0]` to :math:`\hat{x}` coordinates in :math:`[-1,1]`'
+# grid functions
 
 def insert_points(xhat, theta, x, xextra, xa, xb):
     r"""Puts some extra points into the cheby grid, ignoring duplicates and keeping things correctly sorted
@@ -136,7 +122,7 @@ def cheby_grid(xa, xb, n):
 #-------------------------------------------------------------------------------
 # evaluating Chebyshev polynomials and their derivaties
 
-cheby = lambda x, k, xa, xb: cos(k*arccos(x2xhat(x, xa, xb)))
+cheby = lambda x, k, xa=-1, xb=1: cos(k*arccos(x2xhat(x, xa, xb)))
 cheby.__doc__ = r'Evaluates the :math:`k^{\textrm{th}}` chebyshev polynomial in :math:`[x_a,x_b]` at :math:`x`'
 
 cheby_hat = lambda xhat, k: cos(k*arccos(xhat))
@@ -223,7 +209,7 @@ def dcheby_coef(a):
     return(c[:-1])
 
 def cheby_hat_recur_sum(xhat, a):
-    r"""Evaluates a Chebyshev expansion using a recurrance relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with :math:`\arccos`, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrance is widely cited, but of course, See
+    r"""Evaluates a Chebyshev expansion using a recurrence relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with :math:`\arccos`, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrence is widely cited, but of course, See
         * Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.
 
     :param float/array xhat: argument
@@ -244,7 +230,7 @@ def cheby_hat_recur_sum(xhat, a):
     return(y)
 
 def dcheby_hat_recur_sum(xhat, a):
-    """Computes the derivative of a Chebyshev expansion in :math:`[-1,1]` using a recurrence relation, avoiding division by zero at the boundaries when using :func:`dcheby_t`. This is the same procedure as in :func:`dcheby_coef`, but using the derivative coefficients to evaluate the derivative as the recurrance proceeds instead of just storing and returning them.
+    """Computes the derivative of a Chebyshev expansion in :math:`[-1,1]` using a recurrence relation, avoiding division by zero at the boundaries when using :func:`dcheby_t`. This is the same procedure as in :func:`dcheby_coef`, but using the derivative coefficients to evaluate the derivative as the recurrence proceeds instead of just storing and returning them.
 
     :param float/array xhat: argument
     :param array a: expansion coefficients :math:`a_i`

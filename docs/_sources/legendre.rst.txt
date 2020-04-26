@@ -1,0 +1,4 @@
+legendre
+=========
+
+.. automodule:: orthopoly.legendre

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>chebyshev &#8212; orthopoly 0.6 documentation</title>
+    <title>chebyshev &#8212; orthopoly 0.7 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,7 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="spherical_harmonic" href="spherical_harmonic.html" />
+    <link rel="next" title="gegenbauer" href="gegenbauer.html" />
     <link rel="prev" title="Welcome to orthopoly’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -36,7 +36,7 @@
   <img alt="_images/chebys.png" src="_images/chebys.png" />
 <div class="section" id="module-orthopoly.chebyshev">
 <span id="chebyshev"></span><h1>chebyshev<a class="headerlink" href="#module-orthopoly.chebyshev" title="Permalink to this headline">¶</a></h1>
-<p>The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs with non-periodic boundary conditions. Chebyshev polynomials can be defined and evaluated in a number of ways. Here they are defined by</p>
+<p>The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs. Chebyshev polynomials (of the first kind) can be defined and evaluated in a number of ways. Here they are defined by</p>
 <div class="math notranslate nohighlight">
 \[T_k(\hat{x}) = \cos(k \arccos(\hat{x})) \qquad \hat{x} \in [-1,1] \, ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the degree of the polynomial and <span class="math notranslate nohighlight">\(\hat{x}\)</span>. The polynomials are orthogonal with respect to the weighted inner product</p>
@@ -67,30 +67,6 @@
 </ul>
 </dd>
 </dl>
-<dl class="function">
-<dt id="orthopoly.chebyshev.xhat2x">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">xhat2x</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">xa</em>, <em class="sig-param">xb</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.xhat2x" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span> to <span class="math notranslate nohighlight">\(x\)</span> coordinates in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span></p>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.chebyshev.x2xhat">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">x2xhat</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">xa</em>, <em class="sig-param">xb</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.x2xhat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts <span class="math notranslate nohighlight">\(x\)</span> coordinates in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> to <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.chebyshev.xhat2theta">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">xhat2theta</code><span class="sig-paren">(</span><em class="sig-param">xhat</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.xhat2theta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span> to <span class="math notranslate nohighlight">\(\theta\)</span> coordinates <span class="math notranslate nohighlight">\([\pi,0]\)</span></p>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.chebyshev.theta2xhat">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">theta2xhat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.theta2xhat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts <span class="math notranslate nohighlight">\(\theta\)</span> coordinates in <span class="math notranslate nohighlight">\([\pi,0]\)</span> to <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
-</dd></dl>
-
 <dl class="function">
 <dt id="orthopoly.chebyshev.insert_points">
 <code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">insert_points</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">theta</em>, <em class="sig-param">x</em>, <em class="sig-param">xextra</em>, <em class="sig-param">xa</em>, <em class="sig-param">xb</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.insert_points" title="Permalink to this definition">¶</a></dt>
@@ -148,7 +124,7 @@
 
 <dl class="function">
 <dt id="orthopoly.chebyshev.cheby">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">k</em>, <em class="sig-param">xa</em>, <em class="sig-param">xb</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">k</em>, <em class="sig-param">xa=-1</em>, <em class="sig-param">xb=1</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> chebyshev polynomial in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> at <span class="math notranslate nohighlight">\(x\)</span></p>
 </dd></dl>
 
@@ -264,7 +240,7 @@
 <dt id="orthopoly.chebyshev.cheby_hat_recur_sum">
 <code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat_recur_sum</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
-<dt>Evaluates a Chebyshev expansion using a recurrance relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with <span class="math notranslate nohighlight">\(\arccos\)</span>, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrance is widely cited, but of course, See</dt><dd><ul class="simple">
+<dt>Evaluates a Chebyshev expansion using a recurrence relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with <span class="math notranslate nohighlight">\(\arccos\)</span>, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrence is widely cited, but of course, See</dt><dd><ul class="simple">
 <li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
 </ul>
 </dd>
@@ -285,7 +261,7 @@
 <dl class="function">
 <dt id="orthopoly.chebyshev.dcheby_hat_recur_sum">
 <code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dcheby_hat_recur_sum</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the derivative of a Chebyshev expansion in <span class="math notranslate nohighlight">\([-1,1]\)</span> using a recurrence relation, avoiding division by zero at the boundaries when using <a class="reference internal" href="#orthopoly.chebyshev.dcheby_t" title="orthopoly.chebyshev.dcheby_t"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_t</span></code></a>. This is the same procedure as in <a class="reference internal" href="#orthopoly.chebyshev.dcheby_coef" title="orthopoly.chebyshev.dcheby_coef"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_coef</span></code></a>, but using the derivative coefficients to evaluate the derivative as the recurrance proceeds instead of just storing and returning them.</p>
+<dd><p>Computes the derivative of a Chebyshev expansion in <span class="math notranslate nohighlight">\([-1,1]\)</span> using a recurrence relation, avoiding division by zero at the boundaries when using <a class="reference internal" href="#orthopoly.chebyshev.dcheby_t" title="orthopoly.chebyshev.dcheby_t"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_t</span></code></a>. This is the same procedure as in <a class="reference internal" href="#orthopoly.chebyshev.dcheby_coef" title="orthopoly.chebyshev.dcheby_coef"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_coef</span></code></a>, but using the derivative coefficients to evaluate the derivative as the recurrence proceeds instead of just storing and returning them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -441,7 +417,10 @@
 <p class="caption"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">chebyshev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legendre.html">legendre</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spherical_harmonic.html">spherical_harmonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
 </ul>
 
 <div class="relations">
@@ -449,7 +428,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Welcome to orthopoly’s documentation!</a></li>
-      <li>Next: <a href="spherical_harmonic.html" title="next chapter">spherical_harmonic</a></li>
+      <li>Next: <a href="gegenbauer.html" title="next chapter">gegenbauer</a></li>
   </ul></li>
 </ul>
 </div>
@@ -476,7 +455,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Mark M. Baum.
+      &copy;2020, Mark M. Baum.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Welcome to orthopoly’s documentation! &#8212; orthopoly 0.6 documentation</title>
+    <title>Welcome to orthopoly’s documentation! &#8212; orthopoly 0.7 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -32,9 +32,10 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-orthopoly">
+  <img alt="_images/orthopoly.png" src="_images/orthopoly.png" />
+<div class="section" id="module-orthopoly">
 <span id="welcome-to-orthopoly-s-documentation"></span><h1>Welcome to orthopoly’s documentation!<a class="headerlink" href="#module-orthopoly" title="Permalink to this headline">¶</a></h1>
-<p>This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the Chebyshev polynomials and the spherical harmonics. It’s MIT licensed. Use it however you like.</p>
+<p>This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the Chebyshev polynomials and the spherical harmonics. It’s MIT licensed. Use it almost however you like.</p>
 <div class="section" id="installing-using">
 <h2>Installing/Using<a class="headerlink" href="#installing-using" title="Permalink to this headline">¶</a></h2>
 <p>To install the package, you can</p>
@@ -54,6 +55,14 @@
 <li><p>Canuto, Claudio, et al. <em>Spectral methods</em>. Springer-Verlag, Berlin, 2006.</p></li>
 </ul>
 </div>
+<div class="section" id="gegenbauer">
+<h2>gegenbauer<a class="headerlink" href="#gegenbauer" title="Permalink to this headline">¶</a></h2>
+<p>Gegenbauer polynomials <span class="math notranslate nohighlight">\(C_n^m(x)\)</span> are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the <a class="reference internal" href="chebyshev.html#module-orthopoly.chebyshev" title="orthopoly.chebyshev"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chebyshev</span></code></a> module, and cannot be computed by the functions in this module.</p>
+</div>
+<div class="section" id="legendre">
+<h2>legendre<a class="headerlink" href="#legendre" title="Permalink to this headline">¶</a></h2>
+<p>This module implements the Associated Legendre Polynomials, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, and their first two derivatives in support of the <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module. If <span class="math notranslate nohighlight">\(m=0\)</span>, they reduce to the unassociated Legendre polynomials.</p>
+</div>
 <div class="section" id="spherical-harmonic">
 <h2>spherical_harmonic<a class="headerlink" href="#spherical-harmonic" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module provides functions for evaluating the real, two-dimensional (surface), orthonormal, spherical harmonics. It contains functions for evaluating the associated Legendre polynomials and their first two derivatives via stable recursion relationships. From the associated Legendre polynomials, the <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">spherical</span> <span class="pre">harmonics</span></code></a>, their <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grad_sph_har" title="orthopoly.spherical_harmonic.grad_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">gradients</span></code></a>, and their <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.lap_sph_har" title="orthopoly.spherical_harmonic.lap_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">Laplacians</span></code></a> can be evaluated. The module also contains some functions for creating grids on the sphere (<a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_regular" title="orthopoly.spherical_harmonic.grid_regular"><code class="xref py py-func docutils literal notranslate"><span class="pre">regular</span></code></a>, <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_icosahedral" title="orthopoly.spherical_harmonic.grid_icosahedral"><code class="xref py py-func docutils literal notranslate"><span class="pre">icosahedral</span></code></a>, and <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_fibonacci" title="orthopoly.spherical_harmonic.grid_fibonacci"><code class="xref py py-func docutils literal notranslate"><span class="pre">Fibonacci</span></code></a>) and for creating random spherical harmonic expansions with specific power density relationships (noise). The module does not have functions for performing spherical harmonic analysis (transforming from values on the sphere to expansion coefficients).</p>
@@ -69,7 +78,10 @@
 <p class="caption"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="chebyshev.html">chebyshev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legendre.html">legendre</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spherical_harmonic.html">spherical_harmonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
 </ul>
 </div>
 </div>
@@ -101,7 +113,10 @@
 <p class="caption"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="chebyshev.html">chebyshev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legendre.html">legendre</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spherical_harmonic.html">spherical_harmonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
 </ul>
 
 <div class="relations">
@@ -135,7 +150,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Mark M. Baum.
+      &copy;2020, Mark M. Baum.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>

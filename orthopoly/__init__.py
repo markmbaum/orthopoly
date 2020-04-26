@@ -1,5 +1,5 @@
 """
-This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the Chebyshev polynomials and the spherical harmonics. It's MIT licensed. Use it however you like.
+This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the Chebyshev polynomials and the spherical harmonics. It's MIT licensed. Use it almost however you like.
 
 Installing/Using
 ----------------
@@ -26,6 +26,16 @@ Information about the Chebyshev polynomials is widely available, but a few parti
 * Fornberg, Bengt. *A practical guide to pseudospectral methods. Vol. 1*. Cambridge university press, 1998.
 * Canuto, Claudio, et al. *Spectral methods*. Springer-Verlag, Berlin, 2006.
 
+gegenbauer
+----------
+
+Gegenbauer polynomials :math:`C_n^m(x)` are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the :mod:`~orthopoly.chebyshev` module, and cannot be computed by the functions in this module.
+
+legendre
+--------
+
+This module implements the Associated Legendre Polynomials, :math:`P_n^m(x)`, and their first two derivatives in support of the :mod:`~orthopoly.spherical_harmonic` module. If :math:`m=0`, they reduce to the unassociated Legendre polynomials.
+
 spherical_harmonic
 ------------------
 
@@ -40,7 +50,10 @@ The books cited above have some good discussion of spherical harmonics. Other us
 * Bosch, W. "On the computation of derivatives of Legendre functions." Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.
 """
 
+from . import util
 from . import chebyshev
+from . import gegenbauer
+from . import legendre
 from . import spherical_harmonic
 
-__all__ = ['chebyshev', 'spherical_harmonic']
+__all__ = ['util', 'chebyshev', 'gegenbauer', 'legendre', 'spherical_harmonic']

@@ -1,0 +1,4 @@
+util
+====
+
+.. automodule:: orthopoly.util

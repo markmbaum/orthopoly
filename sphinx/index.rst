@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. image:: orthopoly.png
+
 Welcome to orthopoly's documentation!
 =====================================
 
@@ -13,7 +15,10 @@ Welcome to orthopoly's documentation!
    :caption: Modules:
 
    chebyshev
+   gegenbauer
+   legendre
    spherical_harmonic
+   util
 
 
 Indices and tables

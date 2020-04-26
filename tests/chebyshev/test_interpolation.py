@@ -10,7 +10,8 @@ plt.style.use('dark_background')
 #plt.rc('text', usetex=True)
 #plt.rc('font', family='serif')
 
-sys.path.append(join('..', '..'))
+sys.path.insert(0, join('..', '..'))
+from orthopoly.util import *
 from orthopoly.chebyshev import *
 
 #-------------------------------------------------------------------------------

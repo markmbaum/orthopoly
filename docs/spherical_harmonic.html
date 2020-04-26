@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>spherical_harmonic &#8212; orthopoly 0.6 documentation</title>
+    <title>spherical_harmonic &#8212; orthopoly 0.7 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="chebyshev" href="chebyshev.html" />
+    <link rel="next" title="util" href="util.html" />
+    <link rel="prev" title="legendre" href="legendre.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -47,7 +48,7 @@
         P_n^{m}(\cos\theta) &amp; m = 0 \\
         \sqrt{2} \sin(m\theta) P_n^{m}(\cos\theta) &amp; m &gt; 0
     \end{cases}
-\end{equation}</div><p>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is an associated Legendre polynomial (<a class="reference internal" href="#orthopoly.spherical_harmonic.legen_theta" title="orthopoly.spherical_harmonic.legen_theta"><code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code></a>). The harmonics here are orthonormal.</p>
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is an associated Legendre polynomial (<code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code>). The harmonics here are orthonormal.</p>
 <p>This module contains functions for evaluating the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">spherical</span> <span class="pre">harmonics</span></code></a>, their <a class="reference internal" href="#orthopoly.spherical_harmonic.grad_sph_har" title="orthopoly.spherical_harmonic.grad_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">gradients</span></code></a>, and their <a class="reference internal" href="#orthopoly.spherical_harmonic.lap_sph_har" title="orthopoly.spherical_harmonic.lap_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">laplacians</span></code></a>. It doesn’t contain functions to perform transforms from values on the sphere to spherical harmonic expansion coefficients. The module also contains some functions for generating grids in spherical space and for generating random spherical harmonic expansions with specific power density properties (<a class="reference internal" href="#orthopoly.spherical_harmonic.noise" title="orthopoly.spherical_harmonic.noise"><code class="xref py py-func docutils literal notranslate"><span class="pre">noise</span></code></a>). The <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class stores harmonic coefficients, evaluates them, and may be multiplied/divided by scalars. For evaluating only a few expansions at a few sets of points, using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har</span></code></a> function or <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class should be fine. For evaluating many expansions (of the same size) at the same set of points, consider using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har_matrix" title="orthopoly.spherical_harmonic.sph_har_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har_matrix</span></code></a> function.</p>
 <dl class="function">
 <dt id="orthopoly.spherical_harmonic.cart2sph">
@@ -195,140 +196,6 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="orthopoly.spherical_harmonic.gegen_hat">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">gegen_hat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.gegen_hat" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the degree <span class="math notranslate nohighlight">\(n\)</span>, order <span class="math notranslate nohighlight">\(m\)</span> Gegenbauer polynomial using a three term recurrance relationship. As noted in Appendix A of Boyd, this recurrance relationship is mildly unstable for <span class="math notranslate nohighlight">\(m\)</span> &gt; 0 and the instability worsens for higher <span class="math notranslate nohighlight">\(m\)</span>. However, it appears that relative error better than <span class="math notranslate nohighlight">\(10^{-10}\)</span> can be expected if <span class="math notranslate nohighlight">\(m\)</span> is less than about 50. More info is in</dt><dd><ul class="simple">
-<li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>xhat</strong> (<em>array/float</em>) – evaluation point in <span class="math notranslate nohighlight">\([-1,1]\)</span></p></li>
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(C_n^m(\hat{x})\)</span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.spherical_harmonic.legen_norm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">legen_norm</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.legen_norm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates the normalization factor for the associated Legendre polynomials with an iteration instead of direct factorials to help avoid overflow:</p>
-<div class="math notranslate nohighlight">
-\begin{equation}
-    \sqrt{\frac{(2n + 1) (n - m)!}{4 \pi (n + m)!}}
-\end{equation}</div><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>normalization factor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.spherical_harmonic.legen_hat">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">legen_hat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.legen_hat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates the normalized associated Legendre function of degree n and order m, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, through a three term recurrance relationship. These are <strong>normalized</strong> and the normalization factor is:</p>
-<div class="math notranslate nohighlight">
-\begin{equation}
-    \sqrt{\frac{(2n + 1) (n - m)!}{4 \pi (n + m)!}}
-\end{equation}</div><dl class="simple">
-<dt>as defined in chapter 6 of the reference below, but without the extra factor of <span class="math notranslate nohighlight">\(-1^m\)</span></dt><dd><ul class="simple">
-<li><p>Press, William H., et al. Numerical recipes 3rd edition: The art of scientific computing. Cambridge university press, 2007.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>xhat</strong> (<em>array/float</em>) – evaluation point in <span class="math notranslate nohighlight">\([-1,1]\)</span> (can be an array)</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(P_n^m(\hat{x})\)</span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.spherical_harmonic.legen_theta">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">legen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.legen_theta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates the normalized associated Legendre function <span class="math notranslate nohighlight">\(P_n^m(cos(\theta))\)</span> with a colatitude argument in <span class="math notranslate nohighlight">\([0,\pi]\)</span> instead of <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(P_n^m(\cos(\theta))\)</span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.spherical_harmonic.dlegen_theta">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">dlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.dlegen_theta" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the first derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d P_n^m / d \theta\)</span>. This can be used in computing the gradient of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
-<li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated first derivative, <span class="math notranslate nohighlight">\(d P_n^m / d \theta\)</span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="orthopoly.spherical_harmonic.ddlegen_theta">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">ddlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.ddlegen_theta" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the second derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d^2 P_n^m / d \theta^2\)</span>. This can be used in computing the Laplacian of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
-<li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
-<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
-<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>evaluated second derivative, <span class="math notranslate nohighlight">\(d^2 P_n^m / d \theta^2\)</span></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
 <dt id="orthopoly.spherical_harmonic.sph_har_norm">
 <code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_norm</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_norm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates, with an iteration instead of direct factorials to help avoid overflow, the normalization factor for the spherical harmonics,</p>
@@ -355,7 +222,7 @@
 <code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">p</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the <strong>real</strong>, <strong>orthonormal</strong>, spherical harmonic of degree n and
 order m.</p>
-<p>These are associated Legendre polynomials (<a class="reference internal" href="#orthopoly.spherical_harmonic.legen_hat" title="orthopoly.spherical_harmonic.legen_hat"><code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code></a>) in
+<p>These are associated Legendre polynomials (<code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code>) in
 latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine/cosine in longitude (<span class="math notranslate nohighlight">\(\phi\)</span>).</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -366,7 +233,7 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
         \sqrt{2} \sin(m\theta) P_n^{m}(\cos\theta) &amp; m &gt; 0
     \end{cases}
 \end{equation}</div><dl class="simple">
-<dt>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is the normalized associated Legendre function implemented in this module as <a class="reference internal" href="#orthopoly.spherical_harmonic.legen_hat" title="orthopoly.spherical_harmonic.legen_hat"><code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code></a> or <a class="reference internal" href="#orthopoly.spherical_harmonic.legen_theta" title="orthopoly.spherical_harmonic.legen_theta"><code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code></a>. The normalization ensures that the functions are orthonormal. More info can be found in the references below, among many other places</dt><dd><ul class="simple">
+<dt>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is the normalized associated Legendre function implemented in this module as <code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code>. The normalization ensures that the functions are orthonormal. More info can be found in the references below, among many other places</dt><dd><ul class="simple">
 <li><p>Press, William H., et al. Numerical recipes 3rd edition: The art of scientific computing. Cambridge university press, 2007.</p></li>
 <li><p>Dahlen, F.A. and, and Jeroen Tromp. Theoretical global seismology. Princeton university press, 1998.</p></li>
 <li><p>Fornberg, Bengt. A Practical Guide to Pseudospectral Methods. Cambridge University Press, 1996.</p></li>
@@ -419,7 +286,7 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
 <li><p><strong>p</strong> (<em>array/float</em>) – <span class="math notranslate nohighlight">\(\phi\)</span>, azimuth/longitude coordinate in <span class="math notranslate nohighlight">\([0,2\pi]\)</span> (can be an array)</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – degree of harmonic</p></li>
 <li><p><strong>m</strong> (<em>int</em>) – order of harmonic</p></li>
-<li><p><strong>R</strong> (<em>float</em>) – the radius of the spherical surface, which scales the gradient</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – the radius of the spherical surface, which scales the derivatives</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -445,7 +312,7 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 <li><p><strong>p</strong> (<em>array/float</em>) – <span class="math notranslate nohighlight">\(\phi\)</span>, azimuth/longitude coordinate in <span class="math notranslate nohighlight">\([0,2\pi]\)</span> (can be an array)</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – degree of harmonic</p></li>
 <li><p><strong>m</strong> (<em>int</em>) – order of harmonic</p></li>
-<li><p><strong>R</strong> (<em>float</em>) – the radius of the spherical surface, which scales the gradient</p></li>
+<li><p><strong>R</strong> (<em>float</em>) – the radius of the spherical surface, which scales the derivatives</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -704,14 +571,18 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 <p class="caption"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="chebyshev.html">chebyshev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legendre.html">legendre</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">spherical_harmonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="chebyshev.html" title="previous chapter">chebyshev</a></li>
+      <li>Previous: <a href="legendre.html" title="previous chapter">legendre</a></li>
+      <li>Next: <a href="util.html" title="next chapter">util</a></li>
   </ul></li>
 </ul>
 </div>
@@ -738,7 +609,7 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Mark M. Baum.
+      &copy;2020, Mark M. Baum.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>

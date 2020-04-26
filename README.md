@@ -1,6 +1,6 @@
 # orthopoly
 
-This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the [Chebyshev polynomials](http://mathworld.wolfram.com/ChebyshevPolynomialoftheFirstKind.html) and the [spherical harmonics](http://mathworld.wolfram.com/SphericalHarmonic.html). The package is MIT licensed. Use it however you like. **Documentation** is available here: [https://wordsworthgroup.github.io/orthopoly](https://wordsworthgroup.github.io/orthopoly)
+This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the [Chebyshev polynomials](http://mathworld.wolfram.com/ChebyshevPolynomialoftheFirstKind.html) and the [spherical harmonics](http://mathworld.wolfram.com/SphericalHarmonic.html). The package is MIT licensed. Use it almost however you like. **Documentation** is available here: [https://wordsworthgroup.github.io/orthopoly](https://wordsworthgroup.github.io/orthopoly)
 
 ### Installing/Using
 
@@ -22,6 +22,14 @@ Information about the Chebyshev polynomials is widely available, but a few parti
 * Boyd, John P. *Chebyshev and Fourier spectral methods*. Courier Corporation, 2001.
 * Fornberg, Bengt. *A practical guide to pseudospectral methods. Vol. 1*. Cambridge university press, 1998.
 * Canuto, Claudio, et al. *Spectral methods*. Springer-Verlag, Berlin, 2006.
+
+### gegenbauer
+
+Gegenbauer polynomials are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the `chebyshev` module, and cannot be computed by the functions in this module.
+
+### legendre
+
+This module implements the Associated Legendre Polynomials and their first two derivatives in support of the `spherical_harmonic` module. If m=0, they reduce to the unassociated Legendre polynomials.
 
 ### spherical_harmonic
 

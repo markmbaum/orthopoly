@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>legendre &#8212; orthopoly 0.7 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="spherical_harmonic" href="spherical_harmonic.html" />
+    <link rel="prev" title="gegenbauer" href="gegenbauer.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-orthopoly.legendre">
+<span id="legendre"></span><h1>legendre<a class="headerlink" href="#module-orthopoly.legendre" title="Permalink to this headline">¶</a></h1>
+<p>This module implements the Associated Legendre Polynomials, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, and their first two derivatives in support of the <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module. If <span class="math notranslate nohighlight">\(m=0\)</span>, they reduce to the unassociated Legendre polynomials.</p>
+<dl class="function">
+<dt id="orthopoly.legendre.legen_norm">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_norm</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the normalization factor for the associated Legendre polynomials,</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \sqrt{\frac{(2n + 1) (n - m)!}{4 \pi (n + m)!}}
+\end{equation}</div><p>with an iteration instead of direct factorials to help avoid overflow. This function is not used in the other functions in this module, which compute the normalized polynomials without directly calculating the normalization factor. However, it can be used to switch between normalized and unnormalized values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>normalization factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="orthopoly.legendre.legen_hat">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_hat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_hat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the normalized associated Legendre function of degree n and order m, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, through a three term recurrence relationship. These are <strong>normalized</strong> and the normalization factor is:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \sqrt{\frac{(2n + 1) (n - m)!}{4 \pi (n + m)!}}
+\end{equation}</div><dl class="simple">
+<dt>as defined in chapter 6 of the reference below, but without the extra factor of <span class="math notranslate nohighlight">\(-1^m\)</span></dt><dd><ul class="simple">
+<li><p>Press, William H., et al. Numerical recipes 3rd edition: The art of scientific computing. Cambridge university press, 2007.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xhat</strong> (<em>array/float</em>) – evaluation point in <span class="math notranslate nohighlight">\([-1,1]\)</span> (can be an array)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(P_n^m(\hat{x})\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="orthopoly.legendre.legen">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em>, <em class="sig-param">xa=-1</em>, <em class="sig-param">xb=1</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the normalized associated Legendre function of degree n and order m, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, through a three term recurrence relationship, over the interval <span class="math notranslate nohighlight">\([x_a,x_b]\)</span>. These are <strong>normalized</strong> and the normalization factor is:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \sqrt{\frac{(2n + 1) (n - m)!}{4 \pi (n + m)!}}
+\end{equation}</div><dl class="simple">
+<dt>as defined in chapter 6 of the reference below, but without the extra factor of <span class="math notranslate nohighlight">\(-1^m\)</span></dt><dd><ul class="simple">
+<li><p>Press, William H., et al. Numerical recipes 3rd edition: The art of scientific computing. Cambridge university press, 2007.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array/float</em>) – evaluation point in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> (can be an array)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+<li><p><strong>xa</strong> (<em>float</em>) – lower limit of evaluation interval</p></li>
+<li><p><strong>xb</strong> (<em>float</em>) – upper limit of evaluation interval</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="orthopoly.legendre.legen_theta">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the normalized associated Legendre function <span class="math notranslate nohighlight">\(P_n^m(cos(\theta))\)</span> with a colatitude argument in <span class="math notranslate nohighlight">\([0,\pi]\)</span> instead of <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>evaluated function, <span class="math notranslate nohighlight">\(P_n^m[\cos(\theta)]\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="orthopoly.legendre.dlegen_theta">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">dlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.dlegen_theta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Evaluates the first derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d P_n^m / d \theta\)</span>. This can be used in computing the gradient of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
+<li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>evaluated first derivative, <span class="math notranslate nohighlight">\(d P_n^m / d \theta\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="orthopoly.legendre.ddlegen_theta">
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">ddlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.ddlegen_theta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Evaluates the second derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d^2 P_n^m / d \theta^2\)</span>. This can be used in computing the Laplacian of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
+<li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>array/float</em>) – colatitude evaluation point(s) in <span class="math notranslate nohighlight">\([0,\pi]\)</span> (can be an array)</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – degree of polynomial</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – order of polynomial (m &gt;= 0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>evaluated second derivative, <span class="math notranslate nohighlight">\(d^2 P_n^m / d \theta^2\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">orthopoly</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chebyshev.html">chebyshev</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">legendre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spherical_harmonic.html">spherical_harmonic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="gegenbauer.html" title="previous chapter">gegenbauer</a></li>
+      <li>Next: <a href="spherical_harmonic.html" title="next chapter">spherical_harmonic</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Mark M. Baum.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/legendre.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -3,8 +3,8 @@ from os.path import join
 import numpy as np
 import matplotlib.pyplot as plt
 
-sys.path.append(join('..', '..'))
-from orthopoly.spherical_harmonic import *
+sys.path.insert(0, join('..', '..'))
+from orthopoly.legendre import *
 
 plt.style.use('dark_background')
 #plt.rc('text', usetex=True)
