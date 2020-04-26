@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="orthopoly",
-    version="0.6",
+    version="0.7",
     author="Mark M. Baum",
     author_email="markbaum@g.harvard.edu",
     description="Python functions for using Chebyshev polynomials and (real, 2D, orthonormal) spherical harmonics",
