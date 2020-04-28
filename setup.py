@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.7",
     author="Mark M. Baum",
     author_email="markbaum@g.harvard.edu",
-    description="Python functions for using Chebyshev polynomials and (real, 2D, orthonormal) spherical harmonics",
+    description="Python functions for orthogonal polynomials and (real, 2D, orthonormal) spherical harmonics",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/wordsworthgroup/orthopoly",

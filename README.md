@@ -1,6 +1,6 @@
 # orthopoly
 
-This is a package for using sets of orthogonal functions/polynomials. Currently, it includes the [Chebyshev polynomials](http://mathworld.wolfram.com/ChebyshevPolynomialoftheFirstKind.html) and the [spherical harmonics](http://mathworld.wolfram.com/SphericalHarmonic.html). The package is MIT licensed. Use it almost however you like. **Documentation** is available here: [https://wordsworthgroup.github.io/orthopoly](https://wordsworthgroup.github.io/orthopoly)
+This is a package for using sets of orthogonal functions/polynomials. Currently, it includes Chebyshev, Legendre, and Gegenbauer polynomials. It also has real, two-dimensional spherical harmonics. It's MIT licensed. Use it almost however you like. **Documentation** is available here: [https://wordsworthgroup.github.io/orthopoly](https://wordsworthgroup.github.io/orthopoly)
 
 ### Installing/Using
 
@@ -33,7 +33,7 @@ This module implements the Associated Legendre Polynomials and their first two d
 
 ### spherical_harmonic
 
-The `spherical_harmonic` module provides functions for evaluating the real, two-dimensional (surface), orthonormal, spherical harmonics. It contains functions for evaluating the associated Legendre polynomials and their first two derivatives via stable recursion relationships. From the associated Legendre polynomials, the spherical harmonics, their gradients, and their Laplacians can be evaluated. The module also contains some functions for creating grids on the sphere (regular, icosahedral, and Fibonacci) and for creating random spherical harmonic expansions with specific power density relationships (noise). The module does not have functions for performing spherical harmonic analysis (transforming from values on the sphere to expansion coefficients).
+The `spherical_harmonic` module provides functions for evaluating the real, two-dimensional (surface), orthonormal, spherical harmonics.  From the associated Legendre polynomials, the spherical harmonics, their gradients, and their Laplacians can be evaluated. The module also contains some functions for creating grids on the sphere (regular, icosahedral, and Fibonacci) and for creating random spherical harmonic expansions with specific power density relationships (noise). The module does not have functions for performing spherical harmonic analysis (transforming from values on the sphere to expansion coefficients).
 
 For some applications, fitting a spherical harmonic expansion to data in spherical coordinates is useful. A least squares fit can be computed with the pseudoinverse of a matrix full of spherical harmonic function evaluations (see `sph_har_matrix` and related functions). However, this should only be done when the number of points is much greater than the number of terms in the fitted expansion.
 
