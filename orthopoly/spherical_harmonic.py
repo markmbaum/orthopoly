@@ -11,9 +11,9 @@ where :math:`\theta` is the colatitude in :math:`[0,\pi]` and :math:`\phi` is th
     \begin{equation}
         Y_n^m(\theta,\phi) =
         \begin{cases}
-            \sqrt{2} \cos(m\theta) P_n^{|m|}(\cos\theta) & m < 0 \\
+            \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
             P_n^{m}(\cos\theta) & m = 0 \\
-            \sqrt{2} \sin(m\theta) P_n^{m}(\cos\theta) & m > 0
+            \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) & m > 0
         \end{cases}
     \end{equation}
 
@@ -246,9 +246,9 @@ def sph_har(t, p, n, m):
         \begin{equation}
             Y_n^m(\theta,\phi) =
             \begin{cases}
-                \sqrt{2} \cos(m\theta) P_n^{|m|}(\cos\theta) & m < 0 \\
+                \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
                 P_n^{m}(\cos\theta) & m = 0 \\
-                \sqrt{2} \sin(m\theta) P_n^{m}(\cos\theta) & m > 0
+                \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) & m > 0
             \end{cases}
         \end{equation}
 
