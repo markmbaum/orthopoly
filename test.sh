@@ -8,8 +8,10 @@ cd tests/chebyshev
 python test_bvp.py
 python test_interpolation.py
 
-cd ../spherical-harmonic
+cd ../legendre
 python test_associated_legendre.py
+
+cd ../spherical-harmonic
 python test_spherical_harmonic.py
 python test_noise.py
 

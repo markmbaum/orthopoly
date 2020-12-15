@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, join('..', '..'))
 from orthopoly.spherical_harmonic import *
 
-#plt.style.use('dark_background')
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif')
+plt.style.use('dark_background')
+#plt.rc('text', usetex=True)
+#plt.rc('font', family='serif')
 
 #-------------------------------------------------------------------------------
 #FUNCTIONS

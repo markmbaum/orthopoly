@@ -38,7 +38,13 @@ def test_noise(N, ntheta=201, nphi=401, cmap='RdBu'):
             ex = noise(N, p)
             Y = M.dot(ex.a).reshape(ntheta, nphi)
             v = abs(Y).max()
-            r = axa.pcolormesh(P - pi, -T + pi/2, Y, cmap='RdBu', vmin=-v, vmax=v)
+            r = axa.pcolormesh(#P - pi, -T + pi/2, Y,
+                    linspace(-pi, pi, nphi+1),
+                    linspace(-pi/2, pi/2, ntheta+1),
+                    Y,
+                    cmap='RdBu',
+                    vmin=-v,
+                    vmax=v)
             axa.grid(False)
             axa.set_xticks([])
             axa.set_yticks([])
@@ -57,7 +63,7 @@ def test_noise(N, ntheta=201, nphi=401, cmap='RdBu'):
     axb.legend()
     figb.tight_layout()
 
-def plot_noise(N, p='red', ntheta=151, nphi=301, ni=7, nj=8, cmap='RdBu'):
+def plot_noise(N, p='red', ntheta=151, nphi=301, ni=4, nj=5, cmap='RdBu'):
     """Generate noise, from red to blue, and plot the spectra along with
     the expansions
     args:
@@ -82,7 +88,13 @@ def plot_noise(N, p='red', ntheta=151, nphi=301, ni=7, nj=8, cmap='RdBu'):
             ex = noise(N, p)
             Y = M.dot(ex.a).reshape(ntheta, nphi)
             v = abs(Y).max()
-            ax.pcolormesh(P - pi, T - pi/2, Y, cmap=cmap, vmin=-v, vmax=v)
+            ax.pcolormesh(#P - pi, T - pi/2, Y,
+                    linspace(-pi, pi, nphi+1),
+                    linspace(-pi/2, pi/2, ntheta+1),
+                    Y,
+                    cmap=cmap,
+                    vmin=-v,
+                    vmax=v)
             ax.set_xticks([])
             ax.set_yticks([])
 

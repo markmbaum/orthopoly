@@ -11,9 +11,9 @@ where :math:`\theta` is the colatitude in :math:`[0,\pi]` and :math:`\phi` is th
     \begin{equation}
         Y_n^m(\theta,\phi) =
         \begin{cases}
-            \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
+            \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
             P_n^{m}(\cos\theta) & m = 0 \\
-            \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) & m > 0
+            \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) & m > 0
         \end{cases}
     \end{equation}
 
@@ -246,9 +246,9 @@ def sph_har(t, p, n, m):
         \begin{equation}
             Y_n^m(\theta,\phi) =
             \begin{cases}
-                \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
+                \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
                 P_n^{m}(\cos\theta) & m = 0 \\
-                \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) & m > 0
+                \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) & m > 0
             \end{cases}
         \end{equation}
 
@@ -268,9 +268,9 @@ def sph_har(t, p, n, m):
     _check_sph_har_args(t, p, n, m)
 
     #handle different cases for m
-    if     m < 0:  Y = sqrt(2.0)*cos(m*p)
+    if     m < 0:  Y = sqrt(2.0)*sin(m*p)
     elif   m == 0: Y = 1.0 + 0.0*p #is one by default, but the same shape as p
-    else:          Y = sqrt(2.0)*sin(m*p)
+    else:          Y = sqrt(2.0)*cos(m*p)
     #apply the associated Legendre function
     Y *= legen_theta(t, n, abs(m))
 
@@ -316,14 +316,14 @@ def grad_sph_har(t, p, n, m, R=1):
 
     #handle different cases for m
     if m < 0:
-        dt *= sqrt(2.0)*cos(m*p)
-        dp *= -sqrt(2.0)*m*sin(m*p)
-    elif m == 0:
-        dt *= 1.0 + 0.0*p #forece the same shape as p
-        dp *= 0.0*p #force the same shape as p
-    else:
         dt *= sqrt(2.0)*sin(m*p)
         dp *= sqrt(2.0)*m*cos(m*p)
+    elif m == 0:
+        dt *= 1.0 + 0.0*p #force the same shape as p
+        dp *= 0.0*p #force the same shape as p
+    else:
+        dt *= sqrt(2.0)*cos(m*p)
+        dp *= -sqrt(2.0)*m*sin(m*p)
 
     #apply associated Legendre functions
     dt *= dlegen_theta(t, n, abs(m))
@@ -352,14 +352,14 @@ def lap_sph_har(t, p, n, m, R=1):
 
     #handle different cases for m
     if m < 0:
-        ddt *= cos(m*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,abs(m)) + cos(t)*dlegen_theta(t,n,abs(m)))
-        ddp *= -sqrt(2.0)*legen_theta(t,n,abs(m))*(m**2)*cos(m*p)
+        ddt *= sin(m*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,abs(m)) + cos(t)*dlegen_theta(t,n,abs(m)))
+        ddp *= -sqrt(2.0)*legen_theta(t,n,abs(m))*(m**2)*sin(m*p)
     elif m == 0:
         ddt *= sin(t)*ddlegen_theta(t,n,m) + cos(t)*dlegen_theta(t,n,m)
         ddp *= 0.0*t #force the same shape as t
     else:
-        ddt *= sin(m*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,m) + cos(t)*dlegen_theta(t,n,m))
-        ddp *= -sqrt(2.0)*legen_theta(t,n,m)*(m**2)*sin(m*p)
+        ddt *= cos(m*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,m) + cos(t)*dlegen_theta(t,n,m))
+        ddp *= -sqrt(2.0)*legen_theta(t,n,m)*(m**2)*cos(m*p)
 
     #sum the components
     lap = ddt + ddp
@@ -515,12 +515,11 @@ def _find_el(x, y, z):
         el - list of length 3 index arrays indicating vertices of each el"""
 
     try:
-        tri = SphericalVoronoi(np.stack((x, y, z)).T)._tri
+        sv = SphericalVoronoi(np.stack((x, y, z)).T)
     except MemoryError:
         raise MemoryError('There are too many vertices to perform Delaunay triangulation with available memory. You may need to use a bigger computer.')
     else:
-        el = tri.simplices.astype(np.uint32)
-        return(el)
+        return(sv._simplices.astype(np.uint32))
 
 def _subdivide_elements(t, p, el):
     """Subdivide each triangular element in the mesh into four new triangles
@@ -552,46 +551,72 @@ def _subdivide_elements(t, p, el):
     return(t, p, el)
 
 def _icosahedron_base(R=1):
-    """Generate the triangles forming an icosahedron, returned in cartesian
+    """Generates the triangles forming an icosahedron, returned in cartesian
     or spherical coordinates
-    optional args:
-        R - radius of sphere to put vertices on
-    returns:
-        x - x coordinates of icosahedron vertices
-        y - y coordinates of icosahedron vertices
-        z - z coordinates of icosahedron vertices
-        el - list of triangular element indices"""
+
+    :param float R: radius of sphere to put vertices on
+
+    :return: tuple containing
+
+        - array of x coordinates of icosahedron vertices
+        - array of y coordinates of icosahedron vertices
+        - array of z coordinates of icosahedron vertices
+        - list of length 3 arrays of triangular element indices
+        - list of length 3 arrays of element neighbor indices"""
 
     #golden ratio
-    PHI = (1.0 + sqrt(5.0))/2.0
+    Φ = (1.0 + sqrt(5.0))/2.0
 
-    #icosahedron vertices (12 of them)
-    i, j, k = zip(*product([-1, 1], [-PHI, PHI], [0]))
-    pts = list(zip(i,j,k)) + list(zip(j,k,i)) + list(zip(k,i,j))
-    x, y, z = zip(*pts)
-    x, y, z = array(x), array(y), array(z)
+    x = array([-1, -1, 1, 1, -Φ, Φ, -Φ, Φ, 0, 0, 0, 0])
+    y = array([-Φ, Φ, -Φ, Φ, 0, 0, 0, 0, -1, -1, 1, 1])
+    z = array([0, 0, 0, 0, -1, -1, 1, 1, -Φ, Φ, -Φ, Φ])
+    el = array([
+        [0, 2,  9],
+        [1, 4, 10],
+        [0, 2,  8],
+        [2, 7,  9],
+        [7, 9, 11],
+        [3, 5,  7],
+        [5, 8, 10],
+        [2, 5,  8],
+        [3, 5, 10],
+        [6, 9, 11],
+        [1, 6, 11],
+        [2, 5,  7],
+        [3, 7, 11],
+        [1, 3, 11],
+        [0, 4,  8],
+        [4, 8, 10],
+        [1, 4,  6],
+        [0, 4,  6],
+        [0, 6,  9],
+        [1, 3, 10]])
+    ne = array([
+        [ 2,  3, 18],
+        [15, 16, 19],
+        [ 0,  7, 14],
+        [ 0,  4, 11],
+        [ 3,  9, 12],
+        [ 8, 11, 12],
+        [ 7,  8, 15],
+        [ 2,  6, 11],
+        [ 5,  6, 19],
+        [ 4, 10, 18],
+        [ 9, 13, 16],
+        [ 3,  5,  7],
+        [ 4,  5, 13],
+        [10, 12, 19],
+        [ 2, 15, 17],
+        [ 1,  6, 14],
+        [ 1, 10, 17],
+        [14, 16, 18],
+        [ 0,  9, 17],
+        [ 1,  8, 13]])
 
-    #assemble edges (30 of them)
-    D = zeros((12,12))
-    for i in range(12):
-        for j in range(i+1,12):
-            D[i,j] = sqrt((x[i] - x[j])**2 + (y[i] - y[j])**2 + (z[i] - z[j])**2)
-    edg = [array(i, dtype=int_) for i in zip(*np.nonzero(isclose(D,2)))]
-
-    #assemble elements (20 of them)
-    el = set()
-    for i in range(30):
-        for j in range(i+1,30):
-            for k in range(j+1,30):
-                s = set(edg[i]) | set(edg[j]) | set(edg[k])
-                if len(s) == 3:
-                    el.add(tuple(s))
-    el = [array(e, dtype=int_) for e in el]
-
-    #normalize vertices for the proper radius
-    x *= R/sqrt(1 + PHI**2)
-    y *= R/sqrt(1 + PHI**2)
-    z *= R/sqrt(1 + PHI**2)
+    #normalize for proper radius
+    x *= R/sqrt(1 + Φ**2)
+    y *= R/sqrt(1 + Φ**2)
+    z *= R/sqrt(1 + Φ**2)
 
     return(x, y, z, el)
 

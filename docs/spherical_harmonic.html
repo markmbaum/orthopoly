@@ -44,9 +44,9 @@
 \begin{equation}
     Y_n^m(\theta,\phi) =
     \begin{cases}
-        \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) &amp; m &lt; 0 \\
+        \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) &amp; m &lt; 0 \\
         P_n^{m}(\cos\theta) &amp; m = 0 \\
-        \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) &amp; m &gt; 0
+        \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) &amp; m &gt; 0
     \end{cases}
 \end{equation}</div><p>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is an associated Legendre polynomial (<code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code>). The harmonics here are orthonormal.</p>
 <p>This module contains functions for evaluating the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">spherical</span> <span class="pre">harmonics</span></code></a>, their <a class="reference internal" href="#orthopoly.spherical_harmonic.grad_sph_har" title="orthopoly.spherical_harmonic.grad_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">gradients</span></code></a>, and their <a class="reference internal" href="#orthopoly.spherical_harmonic.lap_sph_har" title="orthopoly.spherical_harmonic.lap_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">laplacians</span></code></a>. It doesn’t contain functions to perform transforms from values on the sphere to spherical harmonic expansion coefficients. The module also contains some functions for generating grids in spherical space and for generating random spherical harmonic expansions with specific power density properties (<a class="reference internal" href="#orthopoly.spherical_harmonic.noise" title="orthopoly.spherical_harmonic.noise"><code class="xref py py-func docutils literal notranslate"><span class="pre">noise</span></code></a>). The <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class stores harmonic coefficients, evaluates them, and may be multiplied/divided by scalars. For evaluating only a few expansions at a few sets of points, using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har</span></code></a> function or <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class should be fine. For evaluating many expansions (of the same size) at the same set of points, consider using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har_matrix" title="orthopoly.spherical_harmonic.sph_har_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har_matrix</span></code></a> function.</p>
@@ -228,9 +228,9 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
 \begin{equation}
     Y_n^m(\theta,\phi) =
     \begin{cases}
-        \sqrt{2} \cos(m\phi) P_n^{|m|}(\cos\theta) &amp; m &lt; 0 \\
+        \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) &amp; m &lt; 0 \\
         P_n^{m}(\cos\theta) &amp; m = 0 \\
-        \sqrt{2} \sin(m\phi) P_n^{m}(\cos\theta) &amp; m &gt; 0
+        \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) &amp; m &gt; 0
     \end{cases}
 \end{equation}</div><dl class="simple">
 <dt>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is the normalized associated Legendre function implemented in this module as <code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">legen_theta</span></code>. The normalization ensures that the functions are orthonormal. More info can be found in the references below, among many other places</dt><dd><ul class="simple">

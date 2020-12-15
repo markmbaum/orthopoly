@@ -7,11 +7,15 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, join('..', '..'))
 from orthopoly.spherical_harmonic import *
 
+#plt.style.use('dark_background')
+#plt.rc('text', usetex=True)
+#plt.rc('font', family='serif')
+
 #-------------------------------------------------------------------------------
 # INPUT
 
 #degree of truncation (should be an even number)
-T = 16
+T = 20
 
 #number of grid points for plotting
 nphi = 500
@@ -42,25 +46,38 @@ a = solve(Y, z)
 ex = Expansion(a, yn, ym)
 
 #make a grid for sampling
+ntheta = nphi//2
 pg = linspace(0, 2*pi, nphi)
-tg = linspace(0, pi, nphi//2)
+tg = linspace(0, pi, ntheta)
 Pg, Tg = meshgrid(pg, tg)
 
 #plot results
 fig, (axa, axb, axc) = plt.subplots(3,1)
 
-r = axa.pcolormesh(Pg, Tg, f_z(Tg, Pg))
+r = axa.pcolormesh(
+    linspace(0, 2*pi, nphi+1),
+    linspace(0, pi, ntheta+1),
+    f_z(Tg, Pg))
 plt.colorbar(r, ax=axa)
 axa.scatter(p, t, c='k', s=1)
 axa.set_title('Exact Function')
 
-r = axb.pcolormesh(Pg, Tg, ex(Tg, Pg))
+r = axb.pcolormesh(
+    linspace(0, 2*pi, nphi+1),
+    linspace(0, pi, ntheta+1),
+    ex(Tg, Pg))
 plt.colorbar(r, ax=axb)
 axb.scatter(p, t, c='k', s=1)
 axb.set_title('Reproduced Function')
 
 err = ex(Tg, Pg) - f_z(Tg, Pg)
-r = axc.pcolormesh(Pg, Tg, err, vmin=-abs(err).max(), vmax=abs(err).max(), cmap='RdBu')
+r = axc.pcolormesh(
+    linspace(0, 2*pi, nphi+1),
+    linspace(0, pi, ntheta+1),
+    err,
+    vmin=-abs(err).max(),
+    vmax=abs(err).max(),
+    cmap='RdBu')
 plt.colorbar(r, ax=axc)
 axc.scatter(p, t, c='k', s=1)
 axc.set_title('Error with Dense Sampling')

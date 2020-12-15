@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, join('..', '..'))
 from orthopoly.gegenbauer import *
 
+plt.style.use('dark_background')
+#plt.rc('text', usetex=True)
+#plt.rc('font', family='serif')
+
 xhat = linspace(-1, 1, 1000)
 ylims = [(-3,4), (-8,12),(-20,25)]
 
