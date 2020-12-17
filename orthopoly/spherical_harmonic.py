@@ -17,7 +17,7 @@ where :math:`\theta` is the colatitude in :math:`[0,\pi]` and :math:`\phi` is th
         \end{cases}
     \end{equation}
 
-where :math:`P_n^m` is an associated Legendre polynomial (:func:`legen_theta`). The harmonics here are orthonormal.
+where :math:`P_n^m` is an :func:`associated Legendre polynomial <orthopoly.legendre.legen_theta>`. The harmonics here are orthonormal.
 
 This module contains functions for evaluating the :func:`spherical harmonics <sph_har>`, their :func:`gradients <grad_sph_har>`, and their :func:`laplacians <lap_sph_har>`. It doesn't contain functions to perform transforms from values on the sphere to spherical harmonic expansion coefficients. The module also contains some functions for generating grids in spherical space and for generating random spherical harmonic expansions with specific power density properties (:func:`noise`). The :class:`Expansion` class stores harmonic coefficients, evaluates them, and may be multiplied/divided by scalars. For evaluating only a few expansions at a few sets of points, using the :func:`sph_har` function or :class:`Expansion` class should be fine. For evaluating many expansions (of the same size) at the same set of points, consider using the :func:`sph_har_matrix` function.
 """
@@ -268,9 +268,12 @@ def sph_har(t, p, n, m):
     _check_sph_har_args(t, p, n, m)
 
     #handle different cases for m
-    if     m < 0:  Y = sqrt(2.0)*sin(abs(m)*p)
-    elif   m == 0: Y = 1.0 + 0.0*p #is one by default, but the same shape as p
-    else:          Y = sqrt(2.0)*cos(m*p)
+    if m < 0:
+        Y = sqrt(2.0)*sin(abs(m)*p)
+    elif m == 0:
+        Y = 1.0 + 0.0*p #is one by default, but the same shape as p
+    else:
+        Y = sqrt(2.0)*cos(m*p)
     #apply the associated Legendre function
     Y *= legen_theta(t, n, abs(m))
 

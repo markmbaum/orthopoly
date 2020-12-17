@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, join('..', '..'))
 from orthopoly.spherical_harmonic import *
 
-plt.style.use('dark_background')
-#plt.rc('text', usetex=True)
-#plt.rc('font', family='serif')
+#plt.style.use('dark_background')
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
 
 #-------------------------------------------------------------------------------
 #FUNCTIONS
@@ -106,7 +106,7 @@ def plot_sph_har_pyramid(nmax, nx=301, nz=201, cmap='RdBu'):
 
     for n in range(nmax+1):
         for m in range(-n,n+1):
-            ax = plt.subplot(ni, nj, n*nj + nmax+m+1, projection='aitoff')
+            ax = plt.subplot(ni, nj, n*nj + nmax+m+1, projection='hammer')
             r = ax.pcolormesh(phi-pi, theta-pi/2, Z[(n,m)], vmin=vmin, vmax=vmax, cmap=cmap)
             if m == -n:
                 ax.set_ylabel("$n = %d$" % n, fontsize=10)
@@ -114,8 +114,11 @@ def plot_sph_har_pyramid(nmax, nx=301, nz=201, cmap='RdBu'):
                 ax.set_title("m = %d" % m, fontsize=10)
             ax.set_xticks([])
             ax.set_yticks([])
+
+    #add a colorbar
     cax = fig.add_axes([0.9, 0.05, 0.015, 0.9])
     cb = fig.colorbar(r, cax=cax)
+
     #cb.ax.tick_params(labelsize=14)
     fig.text(0.05, 0.95, 'Real\nSpherical\nHarmonics\n$Y_n^m(\\theta,\\phi)$',
             va='top', ha='left', fontsize=15)

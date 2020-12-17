@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>legendre &#8212; orthopoly 0.7 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spherical_harmonic" href="spherical_harmonic.html" />
@@ -36,9 +37,9 @@
   <div class="section" id="module-orthopoly.legendre">
 <span id="legendre"></span><h1>legendre<a class="headerlink" href="#module-orthopoly.legendre" title="Permalink to this headline">¶</a></h1>
 <p>This module implements the Associated Legendre Polynomials, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, and their first two derivatives in support of the <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module. If <span class="math notranslate nohighlight">\(m=0\)</span>, they reduce to the unassociated Legendre polynomials.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.legen_norm">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_norm</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_norm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_norm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_norm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the normalization factor for the associated Legendre polynomials,</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -57,9 +58,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.legen_hat">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_hat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_hat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_hat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_hat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the normalized associated Legendre function of degree n and order m, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, through a three term recurrence relationship. These are <strong>normalized</strong> and the normalization factor is:</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -84,9 +85,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.legen">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em>, <em class="sig-param">xa=-1</em>, <em class="sig-param">xb=1</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">xa</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">xb</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the normalized associated Legendre function of degree n and order m, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, through a three term recurrence relationship, over the interval <span class="math notranslate nohighlight">\([x_a,x_b]\)</span>. These are <strong>normalized</strong> and the normalization factor is:</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -113,9 +114,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.legen_theta">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_theta" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">legen_theta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.legen_theta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the normalized associated Legendre function <span class="math notranslate nohighlight">\(P_n^m(cos(\theta))\)</span> with a colatitude argument in <span class="math notranslate nohighlight">\([0,\pi]\)</span> instead of <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -131,9 +132,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.dlegen_theta">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">dlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.dlegen_theta" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">dlegen_theta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.dlegen_theta" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Evaluates the first derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d P_n^m / d \theta\)</span>. This can be used in computing the gradient of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
 <li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
@@ -154,9 +155,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.legendre.ddlegen_theta">
-<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">ddlegen_theta</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">n</em>, <em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.ddlegen_theta" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.legendre.</code><code class="sig-name descname">ddlegen_theta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.legendre.ddlegen_theta" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Evaluates the second derivative of the normalized associated Legendre function with colatitude argument, <span class="math notranslate nohighlight">\(d^2 P_n^m / d \theta^2\)</span>. This can be used in computing the Laplacian of spherical harmonics. The algorithm is detailed in:</dt><dd><ul class="simple">
 <li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
@@ -223,7 +224,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -240,7 +241,7 @@
       &copy;2020, Mark M. Baum.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

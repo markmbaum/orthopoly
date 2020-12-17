@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>util &#8212; orthopoly 0.7 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="spherical_harmonic" href="spherical_harmonic.html" />
@@ -35,9 +36,9 @@
   <div class="section" id="module-orthopoly.util">
 <span id="util"></span><h1>util<a class="headerlink" href="#module-orthopoly.util" title="Permalink to this headline">¶</a></h1>
 <p>General use functions</p>
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.util.isnum">
-<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">isnum</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.isnum" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">isnum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.isnum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tests if an object is float-able (a number)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -49,27 +50,27 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.util.xhat2x">
-<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">xhat2x</code><span class="sig-paren">(</span><em class="sig-param">xhat</em>, <em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.xhat2x" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">xhat2x</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.xhat2x" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span> to <span class="math notranslate nohighlight">\(x\)</span> coordinates in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span></p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.util.x2xhat">
-<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">x2xhat</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.x2xhat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">x2xhat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.x2xhat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts <span class="math notranslate nohighlight">\(x\)</span> coordinates in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> to <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.util.xhat2theta">
-<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">xhat2theta</code><span class="sig-paren">(</span><em class="sig-param">xhat</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.xhat2theta" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">xhat2theta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.xhat2theta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span> to <span class="math notranslate nohighlight">\(\theta\)</span> coordinates <span class="math notranslate nohighlight">\([\pi,0]\)</span></p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="orthopoly.util.theta2xhat">
-<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">theta2xhat</code><span class="sig-paren">(</span><em class="sig-param">xhat</em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.theta2xhat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">orthopoly.util.</code><code class="sig-name descname">theta2xhat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.util.theta2xhat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts <span class="math notranslate nohighlight">\(\theta\)</span> coordinates in <span class="math notranslate nohighlight">\([\pi,0]\)</span> to <span class="math notranslate nohighlight">\(\hat{x}\)</span> coordinates in <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 </dd></dl>
 
@@ -118,7 +119,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -135,7 +136,7 @@
       &copy;2020, Mark M. Baum.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
