@@ -11,7 +11,7 @@ where :math:`\theta` is the colatitude in :math:`[0,\pi]` and :math:`\phi` is th
     \begin{equation}
         Y_n^m(\theta,\phi) =
         \begin{cases}
-            \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
+            \sqrt{2} \sin(|m|\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
             P_n^{m}(\cos\theta) & m = 0 \\
             \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) & m > 0
         \end{cases}
@@ -246,7 +246,7 @@ def sph_har(t, p, n, m):
         \begin{equation}
             Y_n^m(\theta,\phi) =
             \begin{cases}
-                \sqrt{2} \sin(m\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
+                \sqrt{2} \sin(|m|\phi) P_n^{|m|}(\cos\theta) & m < 0 \\
                 P_n^{m}(\cos\theta) & m = 0 \\
                 \sqrt{2} \cos(m\phi) P_n^{m}(\cos\theta) & m > 0
             \end{cases}
@@ -268,7 +268,7 @@ def sph_har(t, p, n, m):
     _check_sph_har_args(t, p, n, m)
 
     #handle different cases for m
-    if     m < 0:  Y = sqrt(2.0)*sin(m*p)
+    if     m < 0:  Y = sqrt(2.0)*sin(abs(m)*p)
     elif   m == 0: Y = 1.0 + 0.0*p #is one by default, but the same shape as p
     else:          Y = sqrt(2.0)*cos(m*p)
     #apply the associated Legendre function
@@ -316,8 +316,8 @@ def grad_sph_har(t, p, n, m, R=1):
 
     #handle different cases for m
     if m < 0:
-        dt *= sqrt(2.0)*sin(m*p)
-        dp *= sqrt(2.0)*m*cos(m*p)
+        dt *= sqrt(2.0)*sin(abs(m)*p)
+        dp *= sqrt(2.0)*abs(m)*cos(m*p)
     elif m == 0:
         dt *= 1.0 + 0.0*p #force the same shape as p
         dp *= 0.0*p #force the same shape as p
@@ -352,8 +352,8 @@ def lap_sph_har(t, p, n, m, R=1):
 
     #handle different cases for m
     if m < 0:
-        ddt *= sin(m*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,abs(m)) + cos(t)*dlegen_theta(t,n,abs(m)))
-        ddp *= -sqrt(2.0)*legen_theta(t,n,abs(m))*(m**2)*sin(m*p)
+        ddt *= sin(abs(m)*p)*sqrt(2.0)*(sin(t)*ddlegen_theta(t,n,abs(m)) + cos(t)*dlegen_theta(t,n,abs(m)))
+        ddp *= -sqrt(2.0)*legen_theta(t,n,abs(m))*(m**2)*sin(abs(m)*p)
     elif m == 0:
         ddt *= sin(t)*ddlegen_theta(t,n,m) + cos(t)*dlegen_theta(t,n,m)
         ddp *= 0.0*t #force the same shape as t
