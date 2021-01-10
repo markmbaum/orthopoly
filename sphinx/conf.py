@@ -14,15 +14,14 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
-
 # -- Project information -----------------------------------------------------
 
 project = 'orthopoly'
-copyright = '2020, Mark M. Baum'
+copyright = '2021, Mark M. Baum'
 author = 'Mark M. Baum'
 
 # The full version, including alpha/beta/rc tags
-release = '0.7'
+release = '0.9.1'
 
 
 # -- General configuration ---------------------------------------------------
