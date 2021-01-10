@@ -2,6 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/243561456.svg)](https://zenodo.org/badge/latestdoi/243561456)
 [![Build Status](https://travis-ci.com/wordsworthgroup/orthopoly.svg?branch=master)](https://travis-ci.com/wordsworthgroup/orthopoly)
+[![docs](https://img.shields.io/badge/docs-stable-blue)](https://wordsworthgroup.github.io/orthopoly/)
 
 This is a package for using sets of orthogonal functions/polynomials. Currently, it includes Chebyshev, Legendre, and Gegenbauer polynomials. It also has real, two-dimensional spherical harmonics. It's MIT licensed. Use it almost however you like. **Documentation** is available here: [https://wordsworthgroup.github.io/orthopoly](https://wordsworthgroup.github.io/orthopoly)
 
