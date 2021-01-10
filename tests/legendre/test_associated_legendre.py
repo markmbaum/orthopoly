@@ -114,9 +114,11 @@ ax.legend()
 plt.show()
 
 print('testing analytical evaluation of first derivatives of associated Legendres')
-test_dlegen_theta(20)
+err, fig, ax = test_dlegen_theta(20)
+assert np.nanmax(err) < 1e-5
 plt.show()
 
 print('testing analytical evaluation of second derivative of associated Legendres')
-test_ddlegen_theta(20)
+err, fig, ax = test_ddlegen_theta(20)
+assert np.nanmax(err) < 1e-2
 plt.show()

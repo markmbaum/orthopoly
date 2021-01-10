@@ -13,6 +13,5 @@ python test_associated_legendre.py
 
 cd ../spherical-harmonic
 python test_spherical_harmonic.py
-python test_noise.py
 
 cd ../../

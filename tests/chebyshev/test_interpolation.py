@@ -107,6 +107,8 @@ print('TESTING CHEBYSHEV SPECTRAL CONVERGNECE FOR INTERPOLATION PROBLEM')
 #now test simple interpolation
 err, xs, coefs = cheby_coef_test(xa, xb, pts, F)
 
+assert err[-1] < 1e-25
+
 figa, axa = plt.subplots(1,1)
 figb, axb = plt.subplots(1,1)
 

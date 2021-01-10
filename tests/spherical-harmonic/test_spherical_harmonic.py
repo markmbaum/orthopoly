@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, join('..', '..'))
 from orthopoly.spherical_harmonic import *
 
-#plt.style.use('dark_background')
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif')
+plt.style.use('dark_background')
+#plt.rc('text', usetex=True)
+#plt.rc('font', family='serif')
 
 #-------------------------------------------------------------------------------
 #FUNCTIONS
@@ -141,8 +141,8 @@ def test_grad_sph_har(ntest=100, nmax=100, h=1e-4):
     idx = np.random.randint(1, len(yn), ntest)
     for i in idx:
         n, m = yn[i], ym[i]
-        t = pi*np.random.rand()
-        p = 2*pi*np.random.rand()
+        t = pi*np.random.rand()*(1 - 1e-6) + 1e-6
+        p = 2*pi*np.random.rand()*(1 - 1e-6) + 1e-6
         dt, dp = grad_sph_har(t, p, n, m)
         tg = np.linspace(t - 2*h, t + 2*h, 5)
         pg = np.linspace(p - 2*h, p + 2*h, 5)
@@ -161,6 +161,11 @@ def test_grad_sph_har(ntest=100, nmax=100, h=1e-4):
     n, m, t, p, terr, perr = zip(*res)
     n, m, t, p, terr, perr = (np.array(n), np.array(m), np.array(t),
                              np.array(p), np.array(terr), np.array(perr))
+
+    print('max terr = %g' % max(terr))
+    assert max(terr) < 1e-4
+    print('max perr = %g' % max(perr))
+    assert max(perr) < 1e-4
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8,5))
     ax1.semilogy(t[terr > 1e-20], terr[terr > 1e-20], '.')
@@ -222,8 +227,8 @@ def test_lap_sph_har(ntest=200, nmax=100, h=1e-4):
     idx = np.random.randint(1, len(yn), ntest)
     for i in idx:
         n, m = yn[i], ym[i]
-        t = pi*np.random.rand()
-        p = 2*pi*np.random.rand()
+        t = pi*np.random.rand()*(1 - 1e-6) + 1e-6
+        p = 2*pi*np.random.rand()*(1 - 1e-6) + 1e-6
         lap = lap_sph_har(t, p, n, m)
         tg = np.linspace(t - 2*h, t + 2*h, 5)
         pg = np.linspace(p - 2*h, p + 2*h, 5)
@@ -239,6 +244,9 @@ def test_lap_sph_har(ntest=200, nmax=100, h=1e-4):
 
     n, m, t, p, err = zip(*res)
     n, m, t, p, err = (np.array(n), np.array(m), np.array(t), np.array(p), np.array(err))
+
+    print('max err = %g' % max(err))
+    assert max(err) < 1e-4
 
     fig, ax = plt.subplots(1,1)
     r = ax.scatter(p[err > 1e-20], t[err > 1e-20], c=np.log10(err[err > 1e-20]))
@@ -269,6 +277,7 @@ print('TESTING SPHERICAL HARMONICS')
 
 print('testing orthonormality of spherical harmonics')
 err = test_sph_har_orthonormal(3)
+assert err < 1e-13
 print('maximum absolute error is %g' % err)
 
 print('plotting spherical harmonics')

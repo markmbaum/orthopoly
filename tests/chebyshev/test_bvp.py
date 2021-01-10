@@ -106,6 +106,8 @@ print('TESTING CHEBYSHEV SPECTRAL CONVERGNECE FOR BOUNDARY VALUE PROBLEM')
 #test the boundary value convergence
 err, xs, qexs, qsps = cheby_bvp_test(xa, xb, pts, ad, id, bd, va, vb, F, S, xextra)
 
+assert err[-1] < 1e-10
+
 figa, axa = plt.subplots(1,1)
 figb, axb = plt.subplots(1,1)
 
