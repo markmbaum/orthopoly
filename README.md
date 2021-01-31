@@ -14,7 +14,6 @@ To install the package, you can
 
 or you can download/clone the repository, put the top directory in your `sys.path`, then import it.
 
-
 ### chebyshev
 
 The `chebyshev` module is pretty well developed. It includes many functions for evaluating the Chebyshev polynomials and their derivatives. The module also includes higher level functions for setting up the elements needed to solve boundary value problems (using the pseudospectral method), interpolate using a Chebyshev grid, and perform the spatial discretization of a PDE solver. Generally, these methods are very well suited to smooth problems.
@@ -29,11 +28,11 @@ Information about the Chebyshev polynomials is widely available, but a few parti
 
 ### gegenbauer
 
-Gegenbauer polynomials are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the `chebyshev` module, and cannot be computed by the functions in this module.
+Gegenbauer polynomials are generalizations of Chebyshev and Legendre polynomials. However, Chebyshev polynomials of the first kind are implemented by other methods in the `chebyshev` module, and cannot be computed by the functions in this module.
 
 ### legendre
 
-This module implements the Associated Legendre Polynomials and their first two derivatives in support of the `spherical_harmonic` module. If m=0, they reduce to the unassociated Legendre polynomials.
+This module implements the Associated Legendre Polynomials and their first two derivatives in support of the `spherical_harmonic` module. If `m=0`, they reduce to the unassociated Legendre polynomials.
 
 ### spherical_harmonic
 

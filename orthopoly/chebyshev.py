@@ -1,5 +1,7 @@
 r"""
-The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs. Chebyshev polynomials (of the first kind) can be defined and evaluated in a number of ways. Here they are defined by
+The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs. Since you're reading this, I assume you already know how awesome Chebyshev expansions are! For the right problems, they have exponential, or "infinite order," convergence!
+
+Anyway, Chebyshev polynomials (of the first kind) can be defined and evaluated in a number of ways. Here they are defined by
 
 .. math::   T_k(\hat{x}) = \cos(k \arccos(\hat{x})) \qquad \hat{x} \in [-1,1] \, ,
 
