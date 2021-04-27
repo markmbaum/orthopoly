@@ -102,7 +102,7 @@ def cheby_coef_test(xa, xb, pts, F, da=None, db=None, xextra=None):
 #-------------------------------------------------------------------------------
 #MAIN
 
-print('TESTING CHEBYSHEV SPECTRAL CONVERGNECE FOR INTERPOLATION PROBLEM')
+print('TESTING CHEBYSHEV SPECTRAL CONVERGENCE FOR INTERPOLATION PROBLEM')
 
 #now test simple interpolation
 err, xs, coefs = cheby_coef_test(xa, xb, pts, F)

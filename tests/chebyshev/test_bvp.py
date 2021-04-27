@@ -101,7 +101,7 @@ def cheby_bvp_test(xa, xb, pts, aderiv, ideriv, bderiv, va, vb, F, S, xextra=Non
 #-------------------------------------------------------------------------------
 #MAIN
 
-print('TESTING CHEBYSHEV SPECTRAL CONVERGNECE FOR BOUNDARY VALUE PROBLEM')
+print('TESTING CHEBYSHEV SPECTRAL CONVERGENCE FOR BOUNDARY VALUE PROBLEM')
 
 #test the boundary value convergence
 err, xs, qexs, qsps = cheby_bvp_test(xa, xb, pts, ad, id, bd, va, vb, F, S, xextra)
