@@ -1,6 +1,6 @@
 # orthopoly
 
-[![DOI](https://zenodo.org/badge/243561456.svg)](https://zenodo.org/badge/latestdoi/243561456)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4430584.svg)](https://doi.org/10.5281/zenodo.4430584)
 [![Build Status](https://travis-ci.com/markmbaum/orthopoly.svg?branch=master)](https://travis-ci.com/markmbaum/orthopoly)
 [![docs](https://img.shields.io/badge/docs-stable-blue)](https://markmbaum.github.io/orthopoly/)
 
