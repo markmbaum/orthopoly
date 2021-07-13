@@ -19,8 +19,8 @@ or you can download/clone the repository, put the top directory in your `sys.pat
 The `chebyshev` module is pretty well developed. It includes many functions for evaluating the Chebyshev polynomials and their derivatives. The module also includes higher level functions for setting up the elements needed to solve boundary value problems (using the pseudospectral method), interpolate using a Chebyshev grid, and perform the spatial discretization of a PDE solver. Generally, these methods are very well suited to smooth problems.
 
 Two example notebooks are available:
-* [boundary value problem notebook](notebooks/chebyshev_BVP.ipynb)
-* [interpolation notebook](notebooks/chebyshev_interpolation.ipynb)
+* [boundary value problem notebook](https://nbviewer.jupyter.org/github/markmbaum/orthopoly/blob/master/notebooks/chebyshev_BVP.ipynb)
+* [interpolation notebook](https://nbviewer.jupyter.org/github/markmbaum/orthopoly/blob/master/notebooks/chebyshev_interpolation.ipynb)
 
 For performing a discrete Chebyshev transform (generating a Chebyshev expansion from a set of points in 1D), the `cheby_coef_setup` function can be used. It allows one of the boundary conditions to be the value of the expansion's first derivative and returns a matrix allowing expansion coefficents to be computed by solving a linear system. When there are no derivatives, the transform can be computed (on the appropriate `cheby_grid`) with a discrete cosine transform (DCT). The `cheby_dct` function does this and `cheby_dct_setup` sets up the grid as well.
 
