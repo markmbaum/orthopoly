@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="orthopoly",
-    version="0.9.2",
-    author="Mark M. Baum",
+    version="0.9.3",
+    author="Mark Baum <markmbaum@protonmail.com>",
     author_email="markbaum@g.harvard.edu",
     description="Python functions for orthogonal polynomials and (real, 2D, orthonormal) spherical harmonics",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/wordsworthgroup/orthopoly",
+    url="https://github.com/markmbaum/orthopoly",
     packages=setuptools.find_packages(),
     python_requires='>=3',
     install_requires=[
