@@ -4,22 +4,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to orthopoly’s documentation! &#8212; orthopoly 0.9.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to orthopoly’s documentation! &#8212; orthopoly 0.9.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="chebyshev" href="chebyshev.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="#">
-          <span>orthopoly 0.9.1 documentation</span></a></h1>
+          <span>orthopoly 0.9.3 documentation</span></a></h1>
         <h2 class="heading"><span>Welcome to orthopoly’s documentation!</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -35,18 +35,18 @@
         
         
   <img alt="_images/orthopoly.png" src="_images/orthopoly.png" />
-<div class="section" id="module-orthopoly">
+<section id="module-orthopoly">
 <span id="welcome-to-orthopoly-s-documentation"></span><h1>Welcome to orthopoly’s documentation!<a class="headerlink" href="#module-orthopoly" title="Permalink to this headline">¶</a></h1>
 <p>This is a package for using sets of orthogonal functions/polynomials. Currently, it includes Chebyshev, Legendre, and Gegenbauer polynomials. It also has real, two-dimensional spherical harmonics.</p>
-<div class="section" id="installing-using">
+<section id="installing-using">
 <h2>Installing/Using<a class="headerlink" href="#installing-using" title="Permalink to this headline">¶</a></h2>
 <p>To install the package, you can</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">orthopoly</span>
 </pre></div>
 </div>
 <p>or you can download/clone the repository, put the top directory in your <cite>sys.path</cite>, then import it.</p>
-</div>
-<div class="section" id="chebyshev">
+</section>
+<section id="chebyshev">
 <h2>chebyshev<a class="headerlink" href="#chebyshev" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="chebyshev.html#module-orthopoly.chebyshev" title="orthopoly.chebyshev"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chebyshev</span></code></a> module is pretty well developed. It includes many functions for evaluating the Chebyshev polynomials and their derivatives. The module also includes higher level functions for setting up the elements needed to solve boundary value problems (using the pseudospectral method), interpolate using a Chebyshev grid, and perform the spatial discretization of a PDE solver. Generally, these methods are very well suited to smooth problems.</p>
 <p>For performing a discrete Chebyshev transform (generating a Chebyshev expansion from a set of points in 1D), the <a class="reference internal" href="chebyshev.html#orthopoly.chebyshev.cheby_coef_setup" title="orthopoly.chebyshev.cheby_coef_setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">cheby_coef_setup</span></code></a> function can be used. It allows one of the boundary conditions to be the value of the expansion’s first derivative and returns a matrix allowing expansion coefficents to be computed by solving a linear system. When there are no derivatives, the transform can be computed (on the appropriate <a class="reference internal" href="chebyshev.html#orthopoly.chebyshev.cheby_grid" title="orthopoly.chebyshev.cheby_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">grid</span> <span class="pre">points</span></code></a>) with a discrete cosine transform (DCT). The <a class="reference internal" href="chebyshev.html#orthopoly.chebyshev.cheby_dct" title="orthopoly.chebyshev.cheby_dct"><code class="xref py py-func docutils literal notranslate"><span class="pre">cheby_dct</span></code></a> function does this and <a class="reference internal" href="chebyshev.html#orthopoly.chebyshev.cheby_dct_setup" title="orthopoly.chebyshev.cheby_dct_setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">cheby_dct_setup</span></code></a> sets up the grid as well.</p>
@@ -56,16 +56,16 @@
 <li><p>Fornberg, Bengt. <em>A practical guide to pseudospectral methods. Vol. 1</em>. Cambridge university press, 1998.</p></li>
 <li><p>Canuto, Claudio, et al. <em>Spectral methods</em>. Springer-Verlag, Berlin, 2006.</p></li>
 </ul>
-</div>
-<div class="section" id="gegenbauer">
+</section>
+<section id="gegenbauer">
 <h2>gegenbauer<a class="headerlink" href="#gegenbauer" title="Permalink to this headline">¶</a></h2>
 <p>Gegenbauer polynomials <span class="math notranslate nohighlight">\(C_n^m(x)\)</span> are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the <a class="reference internal" href="chebyshev.html#module-orthopoly.chebyshev" title="orthopoly.chebyshev"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chebyshev</span></code></a> module, and cannot be computed by the functions in this module.</p>
-</div>
-<div class="section" id="legendre">
+</section>
+<section id="legendre">
 <h2>legendre<a class="headerlink" href="#legendre" title="Permalink to this headline">¶</a></h2>
 <p>This module implements the Associated Legendre Polynomials, <span class="math notranslate nohighlight">\(P_n^m(x)\)</span>, and their first two derivatives in support of the <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module. If <span class="math notranslate nohighlight">\(m=0\)</span>, they reduce to the unassociated Legendre polynomials.</p>
-</div>
-<div class="section" id="spherical-harmonic">
+</section>
+<section id="spherical-harmonic">
 <h2>spherical_harmonic<a class="headerlink" href="#spherical-harmonic" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="spherical_harmonic.html#module-orthopoly.spherical_harmonic" title="orthopoly.spherical_harmonic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spherical_harmonic</span></code></a> module provides functions for evaluating the real, two-dimensional (surface), orthonormal, spherical harmonics. From the associated Legendre polynomials, the <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">spherical</span> <span class="pre">harmonics</span></code></a>, their <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grad_sph_har" title="orthopoly.spherical_harmonic.grad_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">gradients</span></code></a>, and their <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.lap_sph_har" title="orthopoly.spherical_harmonic.lap_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">Laplacians</span></code></a> can be evaluated. The module also contains some functions for creating grids on the sphere (<a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_regular" title="orthopoly.spherical_harmonic.grid_regular"><code class="xref py py-func docutils literal notranslate"><span class="pre">regular</span></code></a>, <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_icosahedral" title="orthopoly.spherical_harmonic.grid_icosahedral"><code class="xref py py-func docutils literal notranslate"><span class="pre">icosahedral</span></code></a>, and <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.grid_fibonacci" title="orthopoly.spherical_harmonic.grid_fibonacci"><code class="xref py py-func docutils literal notranslate"><span class="pre">Fibonacci</span></code></a>) and for creating random spherical harmonic expansions with specific power density relationships (noise). The module does not have functions for performing spherical harmonic analysis (transforming from values on the sphere to expansion coefficients).</p>
 <p>For some applications, fitting a spherical harmonic expansion to data in spherical coordinates is useful. A least squares fit can be computed with the pseudoinverse of a matrix full of spherical harmonic function evaluations (see <a class="reference internal" href="spherical_harmonic.html#orthopoly.spherical_harmonic.sph_har_matrix" title="orthopoly.spherical_harmonic.sph_har_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har_matrix</span></code></a> and related functions). However, this should only be done when the number of points is much greater than the number of terms in the fitted expansion.</p>
@@ -75,9 +75,9 @@
 <li><p>Dahlen, F., and Jeroen Tromp. <em>Theoretical global seismology</em>. Princeton university press, 1998.</p></li>
 <li><p>Bosch, W. “On the computation of derivatives of Legendre functions.” Physics and Chemistry of the Earth, Part A: Solid Earth and Geodesy 25.9-11 (2000): 655-659.</p></li>
 </ul>
-</div>
+</section>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Modules:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="chebyshev.html">chebyshev</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gegenbauer.html">gegenbauer</a></li>
@@ -86,14 +86,14 @@
 <li class="toctree-l1"><a class="reference internal" href="util.html">util</a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
+</section>
+<section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
       </div>
@@ -109,7 +109,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Mark M. Baum.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,23 +4,23 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>chebyshev &#8212; orthopoly 0.9.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>chebyshev &#8212; orthopoly 0.9.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="gegenbauer" href="gegenbauer.html" />
     <link rel="prev" title="Welcome to orthopoly’s documentation!" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>orthopoly 0.9.1 documentation</span></a></h1>
+          <span>orthopoly 0.9.3 documentation</span></a></h1>
         <h2 class="heading"><span>chebyshev</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -38,7 +38,7 @@
         
         
   <img alt="_images/chebys.png" src="_images/chebys.png" />
-<div class="section" id="module-orthopoly.chebyshev">
+<section id="module-orthopoly.chebyshev">
 <span id="chebyshev"></span><h1>chebyshev<a class="headerlink" href="#module-orthopoly.chebyshev" title="Permalink to this headline">¶</a></h1>
 <p>The chebyshev module is a collection of functions for setting up and using Chebyshev expansions, which can be used for very high accuracy interpolation on smooth problems and for numerical solutions to boundary value problems and PDEs. Since you’re reading this, I assume you already know how awesome Chebyshev expansions are! For the right problems, they have exponential, or “infinite order,” convergence!</p>
 <p>Anyway, Chebyshev polynomials (of the first kind) can be defined and evaluated in a number of ways. Here they are defined by</p>
@@ -73,8 +73,8 @@
 </dd>
 </dl>
 <dl class="py function">
-<dt id="orthopoly.chebyshev.insert_points">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">insert_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">xextra</span></em>, <em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.insert_points" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.insert_points">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">insert_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xextra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.insert_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Puts some extra points into the cheby grid, ignoring duplicates and keeping things correctly sorted</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -100,8 +100,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_grid">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_grid" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_grid">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the chebyshev “extreme points” for use with all the functions in this module</p>
 <p>The grid points are in <span class="math notranslate nohighlight">\([-1,1]\)</span> and they are</p>
 <div class="math notranslate nohighlight">
@@ -128,20 +128,20 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">xa</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">xb</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> chebyshev polynomial in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> at <span class="math notranslate nohighlight">\(x\)</span></p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_hat">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_hat">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_hat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> chebyshev polynomial in <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_hat_ext">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat_ext</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_ext" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_hat_ext">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_hat_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_ext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates a chebyshev polynomial in <span class="math notranslate nohighlight">\(\hat{x}\)</span> space, but potentially outside of <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -157,20 +157,20 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.dcheby_t">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dcheby_t</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_t" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.dcheby_t">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">dcheby_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the first derivative of the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> order chebyshev polynomial at theta values</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.ddcheby_t">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">ddcheby_t</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.ddcheby_t" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.ddcheby_t">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">ddcheby_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.ddcheby_t" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the second derivative of the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> order chebyshev polynomial at theta values</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.dpcheby_boundary">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dpcheby_boundary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sign</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dpcheby_boundary" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.dpcheby_boundary">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">dpcheby_boundary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dpcheby_boundary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the <span class="math notranslate nohighlight">\(p^{\textrm{th}}\)</span> derivative of the <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> order chebyshev polynomial at -1 or 1</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -187,26 +187,26 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates a chebyshev expansion in <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> with coefficient array <span class="math notranslate nohighlight">\(a_i\)</span> by direct summation of the polynomials</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.dcheby_t_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dcheby_t_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_t_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.dcheby_t_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">dcheby_t_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_t_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the first derivative of the cheby expansion at <span class="math notranslate nohighlight">\(\theta\)</span> values</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_hat_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_hat_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_hat_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates a chebyshev series in <span class="math notranslate nohighlight">\([-1,1]\)</span> with coefficient array <span class="math notranslate nohighlight">\(a_i\)</span> by direct summation of the polynomials</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_hat_ext_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat_ext_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_ext_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_hat_ext_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_hat_ext_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_ext_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates chebyshev expansion anywhere, including outside <span class="math notranslate nohighlight">\([-1,1]\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -222,8 +222,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.dcheby_coef">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dcheby_coef</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_coef" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.dcheby_coef">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">dcheby_coef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_coef" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Computes the coefficents of the derivative of a Chebyshev expansion using a recurrence relation. Higher order differentiation (using this function repeatedly on the same original coefficents) is mildly ill-conditioned. See these references for more info:</dt><dd><ul class="simple">
 <li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
@@ -242,8 +242,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_hat_recur_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_hat_recur_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_hat_recur_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_hat_recur_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Evaluates a Chebyshev expansion using a recurrence relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with <span class="math notranslate nohighlight">\(\arccos\)</span>, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrence is widely cited, but of course, See</dt><dd><ul class="simple">
 <li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
@@ -264,8 +264,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.dcheby_hat_recur_sum">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">dcheby_hat_recur_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.dcheby_hat_recur_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">dcheby_hat_recur_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.dcheby_hat_recur_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the derivative of a Chebyshev expansion in <span class="math notranslate nohighlight">\([-1,1]\)</span> using a recurrence relation, avoiding division by zero at the boundaries when using <a class="reference internal" href="#orthopoly.chebyshev.dcheby_t" title="orthopoly.chebyshev.dcheby_t"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_t</span></code></a>. This is the same procedure as in <a class="reference internal" href="#orthopoly.chebyshev.dcheby_coef" title="orthopoly.chebyshev.dcheby_coef"><code class="xref py py-func docutils literal notranslate"><span class="pre">dcheby_coef</span></code></a>, but using the derivative coefficients to evaluate the derivative as the recurrence proceeds instead of just storing and returning them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -281,8 +281,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_dct">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_dct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_dct" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_dct">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_dct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_dct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds Chebyshev expansion coefficients <span class="math notranslate nohighlight">\(a_k\)</span> using a discrete cosine transform (DCT). For high order expansions, this should be much faster than computing coefficients by solving a linear system.</p>
 <p>The input vector is assumed to contain the values for points lying on a <a class="reference internal" href="#orthopoly.chebyshev.cheby_grid" title="orthopoly.chebyshev.cheby_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">chebyshev</span> <span class="pre">grid</span></code></a>. The Chebyshev expansion is assumed to have the form</p>
 <div class="math notranslate nohighlight">
@@ -299,8 +299,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_idct">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_idct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_idct" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_idct">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_idct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_idct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates a chebyshev series using the inverse discrete cosine transform. For high order expansions, this should be much faster than direct summation of the polynomials.</p>
 <p>The input vector is assumed to contain the values for points lying on a <a class="reference internal" href="#orthopoly.chebyshev.cheby_grid" title="orthopoly.chebyshev.cheby_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">chebyshev</span> <span class="pre">grid</span></code></a>. The Chebyshev expansion is assumed to have the form</p>
 <div class="math notranslate nohighlight">
@@ -317,8 +317,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_bvp_setup">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_bvp_setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">aderiv</span></em>, <em class="sig-param"><span class="n">ideriv</span></em>, <em class="sig-param"><span class="n">bderiv</span></em>, <em class="sig-param"><span class="n">xextra</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_bvp_setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_bvp_setup">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_bvp_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aderiv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideriv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bderiv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xextra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_bvp_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set up the grid and matrices for a Chebyshev spectral solver for boundary value problems in 1 cartesian dimension</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -346,8 +346,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_coef_setup">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_coef_setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">da</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">db</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">xextra</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_coef_setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_coef_setup">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_coef_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xextra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_coef_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs the grid and matrix for finding the coefficients of the chebyshev expansion on <span class="math notranslate nohighlight">\([x_a,x_b]\)</span> with <span class="math notranslate nohighlight">\(n\)</span> points</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -375,8 +375,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.chebyshev.cheby_dct_setup">
-<code class="sig-prename descclassname">orthopoly.chebyshev.</code><code class="sig-name descname">cheby_dct_setup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xa</span></em>, <em class="sig-param"><span class="n">xb</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_dct_setup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.chebyshev.cheby_dct_setup">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.chebyshev.</span></span><span class="sig-name descname"><span class="pre">cheby_dct_setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.chebyshev.cheby_dct_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a Chebyshev grid and return a function for computing Chebyshev expansion coefficients on the grid with a discrete cosine transform (DCT). The returned function wraps <a class="reference internal" href="#orthopoly.chebyshev.cheby_dct" title="orthopoly.chebyshev.cheby_dct"><code class="xref py py-func docutils literal notranslate"><span class="pre">cheby_dct</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -400,7 +400,7 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
       </div>
@@ -418,7 +418,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Mark M. Baum.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,23 +4,23 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spherical_harmonic &#8212; orthopoly 0.9.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spherical_harmonic &#8212; orthopoly 0.9.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="util" href="util.html" />
     <link rel="prev" title="legendre" href="legendre.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>orthopoly 0.9.1 documentation</span></a></h1>
+          <span>orthopoly 0.9.3 documentation</span></a></h1>
         <h2 class="heading"><span>spherical_harmonic</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -38,7 +38,7 @@
         
         
   <img alt="_images/sph_har.png" src="_images/sph_har.png" />
-<div class="section" id="module-orthopoly.spherical_harmonic">
+<section id="module-orthopoly.spherical_harmonic">
 <span id="spherical-harmonic"></span><h1>spherical_harmonic<a class="headerlink" href="#module-orthopoly.spherical_harmonic" title="Permalink to this headline">¶</a></h1>
 <p>The spherical_harmonic module provides functions for evaluation of the real, 2D, orthonormal, spherical harmonics and their first two derivatives. A single spherical harmonic is a function in 2D spherical space with a degree and order, <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(m\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -55,8 +55,8 @@
 \end{equation}</div><p>where <span class="math notranslate nohighlight">\(P_n^m\)</span> is an <a class="reference internal" href="legendre.html#orthopoly.legendre.legen_theta" title="orthopoly.legendre.legen_theta"><code class="xref py py-func docutils literal notranslate"><span class="pre">associated</span> <span class="pre">Legendre</span> <span class="pre">polynomial</span></code></a>. The harmonics here are orthonormal.</p>
 <p>This module contains functions for evaluating the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">spherical</span> <span class="pre">harmonics</span></code></a>, their <a class="reference internal" href="#orthopoly.spherical_harmonic.grad_sph_har" title="orthopoly.spherical_harmonic.grad_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">gradients</span></code></a>, and their <a class="reference internal" href="#orthopoly.spherical_harmonic.lap_sph_har" title="orthopoly.spherical_harmonic.lap_sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">laplacians</span></code></a>. It doesn’t contain functions to perform transforms from values on the sphere to spherical harmonic expansion coefficients. The module also contains some functions for generating grids in spherical space and for generating random spherical harmonic expansions with specific power density properties (<a class="reference internal" href="#orthopoly.spherical_harmonic.noise" title="orthopoly.spherical_harmonic.noise"><code class="xref py py-func docutils literal notranslate"><span class="pre">noise</span></code></a>). The <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class stores harmonic coefficients, evaluates them, and may be multiplied/divided by scalars. For evaluating only a few expansions at a few sets of points, using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har</span></code></a> function or <a class="reference internal" href="#orthopoly.spherical_harmonic.Expansion" title="orthopoly.spherical_harmonic.Expansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expansion</span></code></a> class should be fine. For evaluating many expansions (of the same size) at the same set of points, consider using the <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har_matrix" title="orthopoly.spherical_harmonic.sph_har_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har_matrix</span></code></a> function.</p>
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.cart2sph">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">cart2sph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.cart2sph" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.cart2sph">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">cart2sph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.cart2sph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts 3D cartesian coordinates into spherical coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -79,8 +79,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph2cart">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph2cart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">phi</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph2cart" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph2cart">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph2cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph2cart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts spherical coordinates into 3D cartesian coordinates</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -103,8 +103,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.latlon2sph">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">latlon2sph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lat</span></em>, <em class="sig-param"><span class="n">lon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.latlon2sph" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.latlon2sph">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">latlon2sph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.latlon2sph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from latitude and longitude in degrees to radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -125,8 +125,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph2latlon">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph2latlon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">phi</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph2latlon" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph2latlon">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph2latlon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph2latlon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts from radians to latitude and longitude</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -147,20 +147,20 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.T2nharm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">T2nharm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.T2nharm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.T2nharm">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">T2nharm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.T2nharm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the number of functions/harmonics in a triangular truncation of degree N</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.R2nharm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">R2nharm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">M</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.R2nharm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.R2nharm">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">R2nharm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.R2nharm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the number of functions/harmonics in a rhomboidal truncation of degree N, order width M</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.Tnm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">Tnm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Tnm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Tnm">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">Tnm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Tnm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets arrays representing the degrees and orders of a trianglular truncation of maximum degree N</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -178,8 +178,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.Rnm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">Rnm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">M</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Rnm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Rnm">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">Rnm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Rnm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets arrays representing the degrees and orders of a rhomboidal truncation of maximum degree N and order width M</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -200,8 +200,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har_norm">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_norm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_norm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har_norm">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_norm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates, with an iteration instead of direct factorials to help avoid overflow, the normalization factor for the spherical harmonics,</p>
 <div class="math notranslate nohighlight">
 \begin{equation}
@@ -222,8 +222,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the <strong>real</strong>, <strong>orthonormal</strong>, spherical harmonic of degree n and
 order m.</p>
 <p>These are associated Legendre polynomials (<code class="xref py py-func docutils literal notranslate"><span class="pre">legen_hat</span></code>) in
@@ -260,8 +260,8 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har_sum">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">yn</span></em>, <em class="sig-param"><span class="n">ym</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har_sum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates a spherical harmonic expansion at arbitrary points with arbitrary orders and degrees</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -280,8 +280,8 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.grad_sph_har">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">grad_sph_har</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">R</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grad_sph_har" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.grad_sph_har">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">grad_sph_har</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grad_sph_har" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the gradient of the real, orthonormal, spherical harmonics defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -305,8 +305,8 @@ latitude (<span class="math notranslate nohighlight">\(\theta\)</span>) and sine
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.lap_sph_har">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">lap_sph_har</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">R</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.lap_sph_har" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.lap_sph_har">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">lap_sph_har</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.lap_sph_har" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates the Laplacian of the real, orthonormal, spherical harmonics
 defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph_har" title="orthopoly.spherical_harmonic.sph_har"><code class="xref py py-func docutils literal notranslate"><span class="pre">sph_har</span></code></a></p>
 <dl class="field-list simple">
@@ -326,8 +326,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har_matrix">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">yn</span></em>, <em class="sig-param"><span class="n">ym</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har_matrix">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assembles the matrix of spherical harmonic function values for an arbitrary subset of harmonics using the latitude coordinates t and the longitude coordinates p</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -345,8 +345,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har_T_matrix">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_T_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">N</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_T_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har_T_matrix">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har_T_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_T_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assembles the matrix of spherical harmonic function values for a triangular truncation of degree N using the latitude coordinates t and the longitude coordinates p</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -369,8 +369,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.sph_har_R_matrix">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">sph_har_R_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">M</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_R_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.sph_har_R_matrix">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">sph_har_R_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.sph_har_R_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assembles the matrix of spherical harmonic function values for a rhomboidal truncation of degree N and order width M, using the latitude coordinates t and the longitude coordinates p</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -393,8 +393,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.grid_regular">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">grid_regular</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nth</span></em>, <em class="sig-param"><span class="n">nph</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">poles</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_regular" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.grid_regular">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">grid_regular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_regular" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a grid of points regularly spaced in each direction. It can include points right at the poles or can be a nice 2D array by starting and stopping off the boundaries</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -416,8 +416,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.grid_fibonacci">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">grid_fibonacci</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_fibonacci" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.grid_fibonacci">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">grid_fibonacci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_fibonacci" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Arranges <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(n+1\)</span> points (must be an odd number) in a Fibonacci lattice/grid over the surface of a sphere. The grid achieves nearly uniform spacing over the sphere and is remarkably easy to calculate, making it an attractive option. For details and explanation, see</dt><dd><ul class="simple">
 <li><p>Gonzalez, Alvaro. “Measurement of areas on a sphere using Fibonacci and latitude-longitude lattices.” Mathematical Geosciences 42.1 (2010): 49.</p></li>
@@ -440,8 +440,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.grid_icosahedral">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">grid_icosahedral</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nsub</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_icosahedral" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.grid_icosahedral">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">grid_icosahedral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nsub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.grid_icosahedral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates an icosahedral grid with a given number of subdivisions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -459,8 +459,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.spectrum">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">spectrum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">yn</span></em>, <em class="sig-param"><span class="n">ym</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.spectrum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.spectrum">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the power spectrum of a spherical harmonic expansion, the total power per degree. Because the harmonics are orthonormal, each function’s coefficient is simply squared to compute its power. The squared coefficients of all orders within a degree are averaged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -482,8 +482,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.spherical_harmonic.noise">
-<code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="n">p</span></em>, <em class="sig-param"><span class="n">tol</span><span class="o">=</span><span class="default_value">1e-12</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.noise" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.noise">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates the coefficients for a random triangular spherical harmonic expansion with a specific relationship between the degree and the power spectral density (noise)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -508,8 +508,8 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </dd></dl>
 
 <dl class="py class">
-<dt id="orthopoly.spherical_harmonic.Expansion">
-<em class="property">class </em><code class="sig-prename descclassname">orthopoly.spherical_harmonic.</code><code class="sig-name descname">Expansion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">yn</span></em>, <em class="sig-param"><span class="n">ym</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">Expansion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Stores the expansion coefficients and degree-order pairs of a spherical harmonic expansion and provides a convenient way to evaluate the expansion and its properties. To evaluate the expansion, simply call the object on arrays of spherical coordinates.</p>
 <dl class="field-list simple">
@@ -521,39 +521,39 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt id="orthopoly.spherical_harmonic.Expansion.a">
-<em class="property">property </em><code class="sig-name descname">a</code><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.a" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion.a">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">a</span></span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.a" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coefficients of expansion</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="orthopoly.spherical_harmonic.Expansion.yn">
-<em class="property">property </em><code class="sig-name descname">yn</code><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.yn" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion.yn">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">yn</span></span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.yn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Degrees of functions in expansion</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="orthopoly.spherical_harmonic.Expansion.ym">
-<em class="property">property </em><code class="sig-name descname">ym</code><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.ym" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion.ym">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ym</span></span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.ym" title="Permalink to this definition">¶</a></dt>
 <dd><p>Orders of functions in expansion</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="orthopoly.spherical_harmonic.Expansion.spectrum">
-<em class="property">property </em><code class="sig-name descname">spectrum</code><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.spectrum" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion.spectrum">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">spectrum</span></span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.spectrum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Power density of expansion</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="orthopoly.spherical_harmonic.Expansion.unpack">
-<em class="property">property </em><code class="sig-name descname">unpack</code><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.unpack" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="orthopoly.spherical_harmonic.Expansion.unpack">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">unpack</span></span><a class="headerlink" href="#orthopoly.spherical_harmonic.Expansion.unpack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return tuple with <cite>a</cite>, <cite>yn</cite>, <cite>ym</cite></p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
       </div>
@@ -571,7 +571,7 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Mark M. Baum.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

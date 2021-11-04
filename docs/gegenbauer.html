@@ -4,23 +4,23 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gegenbauer &#8212; orthopoly 0.9.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>gegenbauer &#8212; orthopoly 0.9.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="legendre" href="legendre.html" />
     <link rel="prev" title="chebyshev" href="chebyshev.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>orthopoly 0.9.1 documentation</span></a></h1>
+          <span>orthopoly 0.9.3 documentation</span></a></h1>
         <h2 class="heading"><span>gegenbauer</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -37,12 +37,12 @@
       <div class="content" role="main">
         
         
-  <div class="section" id="module-orthopoly.gegenbauer">
+  <section id="module-orthopoly.gegenbauer">
 <span id="gegenbauer"></span><h1>gegenbauer<a class="headerlink" href="#module-orthopoly.gegenbauer" title="Permalink to this headline">¶</a></h1>
 <p>Gegenbauer polynomials <span class="math notranslate nohighlight">\(C_n^m(x)\)</span> are generalizations of Chebyshev and Legendre polynomials. However, chebyshev polynomials of the first kind are implemented by other methods in the <a class="reference internal" href="chebyshev.html#module-orthopoly.chebyshev" title="orthopoly.chebyshev"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chebyshev</span></code></a> module, and cannot be computed by the functions in this module.</p>
 <dl class="py function">
-<dt id="orthopoly.gegenbauer.gegen_hat">
-<code class="sig-prename descclassname">orthopoly.gegenbauer.</code><code class="sig-name descname">gegen_hat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xhat</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.gegenbauer.gegen_hat" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.gegenbauer.gegen_hat">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.gegenbauer.</span></span><span class="sig-name descname"><span class="pre">gegen_hat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.gegenbauer.gegen_hat" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Evaluates the degree <span class="math notranslate nohighlight">\(n\)</span>, order <span class="math notranslate nohighlight">\(m\)</span> Gegenbauer polynomial (also called “ultraspherical” polynomial) using a three term recurrence relationship. As noted in Appendix A of Boyd, this recurrence relationship is mildly unstable for <span class="math notranslate nohighlight">\(m\)</span> &gt; 0 and the instability worsens for higher <span class="math notranslate nohighlight">\(m\)</span>. However, it appears that relative error better than <span class="math notranslate nohighlight">\(10^{-10}\)</span> can be expected if <span class="math notranslate nohighlight">\(m\)</span> is less than about 50. More info is in appendix A of</dt><dd><ul class="simple">
 <li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
@@ -64,8 +64,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="orthopoly.gegenbauer.gegen">
-<code class="sig-prename descclassname">orthopoly.gegenbauer.</code><code class="sig-name descname">gegen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">xa</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">xb</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.gegenbauer.gegen" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="orthopoly.gegenbauer.gegen">
+<span class="sig-prename descclassname"><span class="pre">orthopoly.gegenbauer.</span></span><span class="sig-name descname"><span class="pre">gegen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.gegenbauer.gegen" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Evaluates the degree <span class="math notranslate nohighlight">\(n\)</span>, order <span class="math notranslate nohighlight">\(m\)</span> Gegenbauer polynomial (also called “ultraspherical” polynomial), over the interval <span class="math notranslate nohighlight">\([x_a,x_b]\)</span>, using a three term recurrence relationship. As noted in Appendix A of Boyd, this recurrence relationship is mildly unstable for <span class="math notranslate nohighlight">\(m\)</span> &gt; 0 and the instability worsens for higher <span class="math notranslate nohighlight">\(m\)</span>. However, it appears that relative error better than <span class="math notranslate nohighlight">\(10^{-10}\)</span> can be expected if <span class="math notranslate nohighlight">\(m\)</span> is less than about 50.</dt><dd><ul class="simple">
 <li><p>Boyd, John P. Chebyshev and Fourier spectral methods. Courier Corporation, 2001.</p></li>
@@ -88,7 +88,7 @@
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
       </div>
@@ -106,7 +106,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Mark M. Baum.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,6 +4,10 @@
 [![Build Status](https://travis-ci.com/markmbaum/orthopoly.svg?branch=master)](https://travis-ci.com/markmbaum/orthopoly)
 [![docs](https://img.shields.io/badge/docs-stable-blue)](https://markmbaum.github.io/orthopoly/)
 
+[![Downloads](https://pepy.tech/badge/orthopoly)](https://pepy.tech/project/orthopoly)
+[![Downloads](https://pepy.tech/badge/orthopoly/month)](https://pepy.tech/project/orthopoly)
+[![Downloads](https://pepy.tech/badge/orthopoly/week)](https://pepy.tech/project/orthopoly)
+
 This is a package for using sets of orthogonal functions/polynomials. Currently, it includes Chebyshev, Legendre, and Gegenbauer polynomials. It also has real, two-dimensional spherical harmonics. It's MIT licensed. Use it almost however you like. **Documentation** is available [**here**](https://markmbaum.github.io/orthopoly).
 
 ### Installing/Using

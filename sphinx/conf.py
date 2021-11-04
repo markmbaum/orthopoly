@@ -21,7 +21,7 @@ copyright = '2021, Mark M. Baum'
 author = 'Mark M. Baum'
 
 # The full version, including alpha/beta/rc tags
-release = '0.9.1'
+release = '0.9.3'
 
 
 # -- General configuration ---------------------------------------------------
