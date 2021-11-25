@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>spherical_harmonic &#8212; orthopoly 0.9.3 documentation</title>
+    <title>spherical_harmonic &#8212; orthopoly 0.9.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -20,7 +20,7 @@
     <link rel="prev" title="legendre" href="legendre.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
-          <span>orthopoly 0.9.3 documentation</span></a></h1>
+          <span>orthopoly 0.9.4 documentation</span></a></h1>
         <h2 class="heading"><span>spherical_harmonic</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -483,7 +483,7 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 
 <dl class="py function">
 <dt class="sig sig-object py" id="orthopoly.spherical_harmonic.noise">
-<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.noise" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">orthopoly.spherical_harmonic.</span></span><span class="sig-name descname"><span class="pre">noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#orthopoly.spherical_harmonic.noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates the coefficients for a random triangular spherical harmonic expansion with a specific relationship between the degree and the power spectral density (noise)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -499,6 +499,7 @@ defined in <a class="reference internal" href="#orthopoly.spherical_harmonic.sph
 </ul>
 </p></li>
 <li><p><strong>tol</strong> (<em>float</em>) – bisection method relative tolerance when normalizing across a single degree’s coefficients for the total power</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – optional seed for random number generator</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

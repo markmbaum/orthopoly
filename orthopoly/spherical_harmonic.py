@@ -25,6 +25,7 @@ This module contains functions for evaluating the :func:`spherical harmonics <sp
 import warnings
 import numpy as np
 from itertools import product
+from random import Random
 from scipy.spatial import SphericalVoronoi
 from numpy import *
 
@@ -684,7 +685,7 @@ def spectrum(a, yn, ym):
 
     return(ns, ps)
 
-def noise(N, p, tol=1e-12):
+def noise(N, p, tol=1e-12, seed=1):
     """Generates the coefficients for a random triangular spherical harmonic expansion with a specific relationship between the degree and the power spectral density (noise)
 
     :param int N: maximum degree in expansion
@@ -696,6 +697,7 @@ def noise(N, p, tol=1e-12):
         * 'blue':   p = 1
         * 'violet': p = 2
     :param float tol: bisection method relative tolerance when normalizing across a single degree's coefficients for the total power
+    :param int seed: optional seed for random number generator
 
     :return: :class:`Expansion` object with expansion coefficients for noise"""
 
@@ -709,6 +711,8 @@ def noise(N, p, tol=1e-12):
         assert isnum(p), 'p must be a number or a keyword'
     #get triangular degree and order arrays
     yn, ym = Tnm(N)
+    #intialize a random number generator
+    rng = Random(seed)
     #find expansion coefficients
     a = zeros((len(yn),))
     for n in set(yn[yn != 0]): #must ignore the zeroth degree (DC component)
@@ -718,7 +722,7 @@ def noise(N, p, tol=1e-12):
         sl = (yn == n)
         L = sum(sl)
         #random uniform distribution across the terms of degree n
-        r = 2.0*np.random.rand(L) - 1.0
+        r = array([2*rng.random() - 1 for _ in range(L)]) #2.0*np.random.rand(L) - 1.0)
         #find a factor f where sum(f*r**2) = d, using the bisection method
         flo = 0.0
         dlo = 0.0

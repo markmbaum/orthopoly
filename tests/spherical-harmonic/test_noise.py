@@ -85,7 +85,7 @@ def plot_noise(N, p='red', ntheta=151, nphi=301, ni=4, nj=5, cmap='RdBu'):
     for i in range(ni):
         for j in range(nj):
             ax = fig.add_subplot(ni, nj, c, projection='mollweide')
-            ex = noise(N, p)
+            ex = noise(N, p, seed=i*j)
             Y = M.dot(ex.a).reshape(ntheta, nphi)
             v = abs(Y).max()
             ax.pcolormesh(#P - pi, T - pi/2, Y,
@@ -141,5 +141,5 @@ print('generating a bunch of different noisy spectra')
 plot_noise(10)
 plt.show()
 
-print('inspecting mean value of many instances of noise')
-noise_means(10, 201, 10000)
+#print('inspecting mean value of many instances of noise')
+#noise_means(10, 201, 10000)
