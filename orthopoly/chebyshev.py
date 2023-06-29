@@ -36,36 +36,37 @@ Tons of information on these and other methods can be found in these references:
     * Canuto, Claudio, et al. *Spectral methods*. Springer-Verlag, Berlin, 2006.
 """
 
-from numpy import *
+from numpy import pi, cos, sin, sqrt, prod, arccos, arange, array, zeros, sort
 from scipy.fftpack import dct, idct
 
-from .util import *
+from .util import x2xhat, xhat2x
 
 __all__ = [
-    'insert_points',
-    'cheby_grid',
-    'cheby',
-    'cheby_hat',
-    'cheby_hat_ext',
-    'dcheby_t',
-    'ddcheby_t',
-    'dpcheby_boundary',
-    'cheby_sum',
-    'dcheby_t_sum',
-    'cheby_hat_sum',
-    'cheby_hat_ext_sum',
-    'dcheby_coef',
-    'cheby_hat_recur_sum',
-    'dcheby_hat_recur_sum',
-    'cheby_dct',
-    'cheby_idct',
-    'cheby_bvp_setup',
-    'cheby_coef_setup',
-    'cheby_dct_setup'
+    "insert_points",
+    "cheby_grid",
+    "cheby",
+    "cheby_hat",
+    "cheby_hat_ext",
+    "dcheby_t",
+    "ddcheby_t",
+    "dpcheby_boundary",
+    "cheby_sum",
+    "dcheby_t_sum",
+    "cheby_hat_sum",
+    "cheby_hat_ext_sum",
+    "dcheby_coef",
+    "cheby_hat_recur_sum",
+    "dcheby_hat_recur_sum",
+    "cheby_dct",
+    "cheby_idct",
+    "cheby_bvp_setup",
+    "cheby_coef_setup",
+    "cheby_dct_setup",
 ]
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # grid functions
+
 
 def insert_points(xhat, theta, x, xextra, xa, xb):
     r"""Puts some extra points into the cheby grid, ignoring duplicates and keeping things correctly sorted
@@ -84,13 +85,16 @@ def insert_points(xhat, theta, x, xextra, xa, xb):
         - grid points on :math:`[x_a,x_b]` with points inserted"""
 
     xextra = array(xextra)
-    assert all((x >= xa) | (x <= xb)), 'extra points cannot be outside the domain [xa,xb]'
+    assert all(
+        (x >= xa) | (x <= xb)
+    ), "extra points cannot be outside the domain [xa,xb]"
 
     x = sort(array(list(set(x) | set(xextra))))
     xhat = x2xhat(x, xa, xb)
     theta = arccos(xhat)
 
-    return(xhat, theta, x)
+    return (xhat, theta, x)
+
 
 def cheby_grid(xa, xb, n):
     r"""Computes the chebyshev "extreme points" for use with all the functions in this module
@@ -111,30 +115,40 @@ def cheby_grid(xa, xb, n):
         - array of theta values, :math:`\arccos(\hat{x})`, in :math:`[0,\pi]`
         - array collocation points in :math:`[x_a,x_b]`"""
 
-    #order of expansion
+    # order of expansion
     ord = n - 1
-    #grid (collocation/interpolation points)
+    # grid (collocation/interpolation points)
     j = arange(0, n)
-    theta = (pi*j/ord)[::-1]
-    xhat = cos(theta) #points in [-1,1]
-    x = xhat2x(xhat, xa, xb) #points in [xa, xb]
+    theta = (pi * j / ord)[::-1]
+    xhat = cos(theta)  # points in [-1,1]
+    x = xhat2x(xhat, xa, xb)  # points in [xa, xb]
 
-    return(xhat, theta, x)
+    return (xhat, theta, x)
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 # evaluating Chebyshev polynomials and their derivaties
 
-cheby = lambda x, k, xa=-1, xb=1: cos(k*arccos(x2xhat(x, xa, xb)))
-cheby.__doc__ = r'Evaluates the :math:`k^{\textrm{th}}` chebyshev polynomial in :math:`[x_a,x_b]` at :math:`x`'
 
-cheby_hat = lambda xhat, k: cos(k*arccos(xhat))
-cheby_hat.__doc__ = r'Evaluates the :math:`k^{\textrm{th}}` chebyshev polynomial in :math:`[-1,1]`'
+def cheby(x, k, xa=-1, xb=1):
+    r"Evaluates the :math:`k^{\textrm{th}}` chebyshev polynomial in :math:`[x_a,x_b]` at :math:`x`"
+    return cos(k * arccos(x2xhat(x, xa, xb)))
 
-dcheby_t = lambda t, k: k*sin(k*t)/sin(t)
-dcheby_t.__doc__ = r'Evaluates the first derivative of the :math:`k^{\textrm{th}}` order chebyshev polynomial at theta values'
 
-ddcheby_t = lambda t, k: (sin(t)*(-k*k*cos(k*t)) - cos(t)*(-k*sin(k*t)))/(sin(t)**3)
-ddcheby_t.__doc__ = r'Evaluates the second derivative of the :math:`k^{\textrm{th}}` order chebyshev polynomial at theta values'
+def cheby_hat(xhat, k):
+    r"Evaluates the :math:`k^{\textrm{th}}` chebyshev polynomial in :math:`[-1,1]`"
+    return cos(k * arccos(xhat))
+
+
+def dcheby_t(t, k):
+    r"Evaluates the first derivative of the :math:`k^{\textrm{th}}` order chebyshev polynomial at theta values"
+    return k * sin(k * t) / sin(t)
+
+
+def ddcheby_t(t, k):
+    r"Evaluates the second derivative of the :math:`k^{\textrm{th}}` order chebyshev polynomial at theta values"
+    return (sin(t) * (-k * k * cos(k * t)) - cos(t) * (-k * sin(k * t))) / (sin(t) ** 3)
+
 
 def cheby_hat_ext(xhat, k):
     r"""Evaluates a chebyshev polynomial in :math:`\hat{x}` space, but potentially outside of :math:`[-1,1]`
@@ -145,9 +159,12 @@ def cheby_hat_ext(xhat, k):
     :return: :math:`T_k(\hat{x})`"""
 
     if abs(xhat) <= 1.0:
-        return( cheby_hat(xhat, k) )
+        return cheby_hat(xhat, k)
     else:
-        return( ((xhat - sqrt(xhat**2 - 1))**k + (xhat + sqrt(xhat**2 - 1))**k)/2 )
+        return (
+            (xhat - sqrt(xhat**2 - 1)) ** k + (xhat + sqrt(xhat**2 - 1)) ** k
+        ) / 2
+
 
 def dpcheby_boundary(sign, k, p):
     r"""Evaluates the :math:`p^{\textrm{th}}` derivative of the :math:`k^{\textrm{th}}` order chebyshev polynomial at -1 or 1
@@ -158,22 +175,30 @@ def dpcheby_boundary(sign, k, p):
 
     :return: :math:`d T_k(\pm 1) / dx`"""
 
-    assert sign == 1 or sign == -1, 'sign must be -1 or 1'
-    n = arange(0,p)
-    d = (sign**(k+p))*prod((k**2 - n**2)/(2*n + 1))
-    return(d)
+    assert sign == 1 or sign == -1, "sign must be -1 or 1"
+    n = arange(0, p)
+    d = (sign ** (k + p)) * prod((k**2 - n**2) / (2 * n + 1))
+    return d
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 # evaluating Chebyshev expansions and their derivaties
 
-cheby_sum = lambda x, a, xa, xb: sum(a[k]*cheby(x, k, xa, xb) for k in range(len(a)))
-cheby_sum.__doc__ = 'Evaluates a chebyshev expansion in :math:`[x_a,x_b]` with coefficient array :math:`a_i` by direct summation of the polynomials'
 
-dcheby_t_sum = lambda t, a: sum(a[k]*dcheby_t(t, k) for k in range(len(a)))
-dcheby_t_sum.__doc__ = r'Evaluates the first derivative of the cheby expansion at :math:`\theta` values'
+def cheby_sum(x, a, xa, xb):
+    "Evaluates a chebyshev expansion in :math:`[x_a,x_b]` with coefficient array :math:`a_i` by direct summation of the polynomials"
+    return sum(a[k] * cheby(x, k, xa, xb) for k in range(len(a)))
 
-cheby_hat_sum = lambda xhat, a: sum(a[i]*cheby_hat(xhat, i) for i in range(len(a)))
-cheby_hat_sum.__doc__ = 'Evaluates a chebyshev series in :math:`[-1,1]` with coefficient array :math:`a_i` by direct summation of the polynomials'
+
+def dcheby_t_sum(t, a):
+    r"Evaluates the first derivative of the cheby expansion at :math:`\theta` values"
+    return sum(a[k] * dcheby_t(t, k) for k in range(len(a)))
+
+
+def cheby_hat_sum(xhat, a):
+    "Evaluates a chebyshev series in :math:`[-1,1]` with coefficient array :math:`a_i` by direct summation of the polynomials"
+    return sum(a[i] * cheby_hat(xhat, i) for i in range(len(a)))
+
 
 def cheby_hat_ext_sum(xhat, a):
     r"""Evaluates chebyshev expansion anywhere, including outside :math:`[-1,1]`
@@ -184,14 +209,20 @@ def cheby_hat_ext_sum(xhat, a):
     :return: evaluated expansion"""
 
     if abs(xhat) < 1.0:
-        return( cheby_hat_sum(xhat, a) )
+        return cheby_hat_sum(xhat, a)
     else:
-        return( sum( (a[k]*(
-                  (xhat - sqrt(xhat**2 - 1))**k
-                + (xhat + sqrt(xhat**2 - 1))**k)/2)
-                for k in range(len(a))
+        return sum(
+            (
+                a[k]
+                * (
+                    (xhat - sqrt(xhat**2 - 1)) ** k
+                    + (xhat + sqrt(xhat**2 - 1)) ** k
+                )
+                / 2
             )
+            for k in range(len(a))
         )
+
 
 def dcheby_coef(a):
     """Computes the coefficents of the derivative of a Chebyshev expansion using a recurrence relation. Higher order differentiation (using this function repeatedly on the same original coefficents) is mildly ill-conditioned. See these references for more info:
@@ -202,13 +233,14 @@ def dcheby_coef(a):
 
     :return: expansion coefficients of the input expansion's derivative"""
 
-    n = len(a) #number of coefficients
+    n = len(a)  # number of coefficients
     c = zeros((n,))
-    c[n-2] = 2*(n-1)*a[n-1]
-    for i in range(n-2,0,-1):
-        c[i-1] = c[i+1] + 2*i*a[i]
+    c[n - 2] = 2 * (n - 1) * a[n - 1]
+    for i in range(n - 2, 0, -1):
+        c[i - 1] = c[i + 1] + 2 * i * a[i]
     c[0] /= 2
-    return(c[:-1])
+    return c[:-1]
+
 
 def cheby_hat_recur_sum(xhat, a):
     r"""Evaluates a Chebyshev expansion using a recurrence relationship. This is helpful for things like root finding near the boundaries of the domain because, if the terms are evaluated with :math:`\arccos`, they are not defined outside the domain. Any tiny departure outside the boundaries triggers a NaN. This recurrence is widely cited, but of course, See
@@ -219,17 +251,18 @@ def cheby_hat_recur_sum(xhat, a):
 
     :return: evaluated expansion"""
 
-    #first two terms
+    # first two terms
     c0, c1 = 1.0, xhat
-    #apply them
-    y = a[0]*c0 + a[1]*c1
-    #recurr
-    for i in range(2,len(a)):
-        c2 = 2*xhat*c1 - c0
-        y += c2*a[i]
+    # apply them
+    y = a[0] * c0 + a[1] * c1
+    # recurr
+    for i in range(2, len(a)):
+        c2 = 2 * xhat * c1 - c0
+        y += c2 * a[i]
         c0 = c1
         c1 = c2
-    return(y)
+    return y
+
 
 def dcheby_hat_recur_sum(xhat, a):
     """Computes the derivative of a Chebyshev expansion in :math:`[-1,1]` using a recurrence relation, avoiding division by zero at the boundaries when using :func:`dcheby_t`. This is the same procedure as in :func:`dcheby_coef`, but using the derivative coefficients to evaluate the derivative as the recurrence proceeds instead of just storing and returning them.
@@ -239,18 +272,19 @@ def dcheby_hat_recur_sum(xhat, a):
 
     :return: evaluated expansion"""
 
-    n = len(a) #number of coefficients
+    n = len(a)  # number of coefficients
     dy = 0.0
-    c2 = 0.0 #recurrence group
-    c1 = 2*(n-1)*a[n-1] #initial, highest order coefficient
-    dy += c1*cheby_hat_ext(xhat, n-2)
-    for i in range(n-2,1,-1):
-        c0 = c2 + 2*i*a[i]
-        dy += c0*cheby_hat_ext(xhat, i-1)
+    c2 = 0.0  # recurrence group
+    c1 = 2 * (n - 1) * a[n - 1]  # initial, highest order coefficient
+    dy += c1 * cheby_hat_ext(xhat, n - 2)
+    for i in range(n - 2, 1, -1):
+        c0 = c2 + 2 * i * a[i]
+        dy += c0 * cheby_hat_ext(xhat, i - 1)
         c2 = c1
         c1 = c0
-    dy += (c2 + 2*a[1])/2.0
-    return(dy)
+    dy += (c2 + 2 * a[1]) / 2.0
+    return dy
+
 
 """def cheby_matrix(xhat, kmax, deriv=0):
 
@@ -265,8 +299,9 @@ def dcheby_hat_recur_sum(xhat, a):
                 if deriv == 0:
                     A[i,k] ="""
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # discrete Chebyshev transform
+
 
 def cheby_dct(y):
     r"""Finds Chebyshev expansion coefficients :math:`a_k` using a discrete cosine transform (DCT). For high order expansions, this should be much faster than computing coefficients by solving a linear system.
@@ -281,15 +316,16 @@ def cheby_dct(y):
 
     :return: array of Chebyshev coefficients :math:`a_k`"""
 
-    #length of transform
+    # length of transform
     n = len(y)
-    #transform
-    a = dct(y, type=1, n=n)/(2*n - 2)
-    #a little bit of correction for conventions
+    # transform
+    a = dct(y, type=1, n=n) / (2 * n - 2)
+    # a little bit of correction for conventions
     a[1:-1] *= 2
     a[1::2] *= -1
 
-    return(a)
+    return a
+
 
 def cheby_idct(a):
     r"""Evaluates a chebyshev series using the inverse discrete cosine transform. For high order expansions, this should be much faster than direct summation of the polynomials.
@@ -302,19 +338,22 @@ def cheby_idct(a):
 
     :param array a: chebyshev expansion coefficients :math:`a_k`
 
-    :return: array of evaluated expansion values at :func:`chebyshev grid <cheby_grid>` points"""
+    :return: array of evaluated expansion values at :func:`chebyshev grid <cheby_grid>` points
+    """
 
-    #copy and correct for convention
+    # copy and correct for convention
     a = a.copy()
     a[1:-1] /= 2
     a[1::2] *= -1
-    #transform
+    # transform
     y = idct(a, type=1)
 
-    return(y)
+    return y
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 # high-level functions for setting up transforms
+
 
 def cheby_bvp_setup(xa, xb, n, aderiv, ideriv, bderiv, xextra=None):
     r"""Set up the grid and matrices for a Chebyshev spectral solver for boundary value problems in 1 cartesian dimension
@@ -334,41 +373,46 @@ def cheby_bvp_setup(xa, xb, n, aderiv, ideriv, bderiv, xextra=None):
         - collocation points in :math:`[x_a,x_b]`
         - matrix to solve for the expansion coefficients"""
 
-    assert aderiv == 0 or bderiv == 0, 'either aderiv or bderiv must be zero'
-    assert (ideriv > 0 and ideriv < 3), "ideriv must be 1 or 2"
+    assert aderiv == 0 or bderiv == 0, "either aderiv or bderiv must be zero"
+    assert ideriv > 0 and ideriv < 3, "ideriv must be 1 or 2"
 
-    #scale factor for derivatives when mapping [-1,1] to [xa, xb]
-    scale = (xb - xa)/2.0 #length of [xa,xb] divided by length of [-1,1]
+    # scale factor for derivatives when mapping [-1,1] to [xa, xb]
+    scale = (xb - xa) / 2.0  # length of [xa,xb] divided by length of [-1,1]
 
-    #grid points
+    # grid points
     xhat, theta, x = cheby_grid(xa, xb, n)
     if xextra is not None:
         xhat, theta, x = insert_points(xhat, theta, x, xextra, xa, xb)
         n = len(x)
 
-    #solver matrix (j is for rows/points and k is for colums or expansion order)
-    A = zeros((n,n))
-    #left boundary condition/row
+    # solver matrix (j is for rows/points and k is for colums or expansion order)
+    A = zeros((n, n))
+    # left boundary condition/row
     if aderiv > 0:
-        for k in range(n): A[0,k] = dpcheby_boundary(-1, k, aderiv)/(scale**aderiv)
+        for k in range(n):
+            A[0, k] = dpcheby_boundary(-1, k, aderiv) / (scale**aderiv)
     else:
-        for k in range(n): A[0,k] = cheby_hat(-1, k)
-    #internal nodes
+        for k in range(n):
+            A[0, k] = cheby_hat(-1, k)
+    # internal nodes
     if ideriv == 1:
         dfunk = dcheby_t
     elif ideriv == 2:
         dfunk = ddcheby_t
-    for j in range(1,n-1):
+    for j in range(1, n - 1):
         for k in range(n):
-            #have to do the js backward if the x values are to be in increasing order
-            A[j,k] = dfunk(theta[j], k)/(scale**ideriv)
-    #right boundary condition/row
+            # have to do the js backward if the x values are to be in increasing order
+            A[j, k] = dfunk(theta[j], k) / (scale**ideriv)
+    # right boundary condition/row
     if bderiv > 0:
-        for k in range(n): A[-1,k] = dpcheby_boundary(1, k, bderiv)/(scale**bderiv)
+        for k in range(n):
+            A[-1, k] = dpcheby_boundary(1, k, bderiv) / (scale**bderiv)
     else:
-        for k in range(n): A[-1,k] = cheby_hat(1, k)
+        for k in range(n):
+            A[-1, k] = cheby_hat(1, k)
 
-    return(xhat, theta, x, A)
+    return (xhat, theta, x, A)
+
 
 def cheby_coef_setup(xa, xb, n, da=False, db=False, xextra=None):
     r"""Constructs the grid and matrix for finding the coefficients of the chebyshev expansion on :math:`[x_a,x_b]` with :math:`n` points
@@ -388,26 +432,29 @@ def cheby_coef_setup(xa, xb, n, da=False, db=False, xextra=None):
         - matrix to solve for the expansion coefficients
         - scale factor for derivatives"""
 
-    #scale factor for derivatives when mapping [-1,1] to [xa, xb]
-    scale = (xb - xa)/2.0 #length of [xa,xb] divided by length of [-1,1]
+    # scale factor for derivatives when mapping [-1,1] to [xa, xb]
+    scale = (xb - xa) / 2.0  # length of [xa,xb] divided by length of [-1,1]
 
-    #grid points
+    # grid points
     xhat, theta, x = cheby_grid(xa, xb, n)
     if xextra is not None:
         xhat, theta, x = insert_points(xhat, theta, x, xextra, xa, xb)
         n = len(x)
 
-    #solver matrix (j is for rows/points and k is for colums or expansion order)
-    A = zeros((n,n))
+    # solver matrix (j is for rows/points and k is for colums or expansion order)
+    A = zeros((n, n))
     for j in range(n):
         for k in range(n):
-            A[j,k] = cheby_hat(xhat[j], k)
+            A[j, k] = cheby_hat(xhat[j], k)
     if da:
-        for k in range(n): A[0,k] = dpcheby_boundary(-1, k, 1)/scale
+        for k in range(n):
+            A[0, k] = dpcheby_boundary(-1, k, 1) / scale
     if db:
-        for k in range(n): A[-1,k] = dpcheby_boundary(1, k, 1)/scale
+        for k in range(n):
+            A[-1, k] = dpcheby_boundary(1, k, 1) / scale
 
-    return(xhat, theta, x, A, scale)
+    return (xhat, theta, x, A, scale)
+
 
 def cheby_dct_setup(xa, xb, n):
     r"""Constructs a Chebyshev grid and return a function for computing Chebyshev expansion coefficients on the grid with a discrete cosine transform (DCT). The returned function wraps :func:`cheby_dct`.
@@ -424,13 +471,10 @@ def cheby_dct_setup(xa, xb, n):
         - function for computing expansion coefficients
         - scale factor for derivatives"""
 
-    #scale factor for derivatives when mapping [-1,1] to [xa, xb]
-    scale = (xb - xa)/2.0 #length of [xa,xb] divided by length of [-1,1]
+    # scale factor for derivatives when mapping [-1,1] to [xa, xb]
+    scale = (xb - xa) / 2.0  # length of [xa,xb] divided by length of [-1,1]
 
-    #grid points
+    # grid points
     xhat, theta, x = cheby_grid(xa, xb, n)
 
-    #DCT function for computing coefficents
-    func = lambda y: cheby_dct(y)
-
-    return(xhat, theta, x, func, scale)
+    return (xhat, theta, x, cheby_dct, scale)
