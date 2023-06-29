@@ -56,4 +56,4 @@ from . import gegenbauer
 from . import legendre
 from . import spherical_harmonic
 
-__all__ = ['util', 'chebyshev', 'gegenbauer', 'legendre', 'spherical_harmonic']
+__all__ = ["util", "chebyshev", "gegenbauer", "legendre", "spherical_harmonic"]
