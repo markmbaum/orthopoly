@@ -35,9 +35,8 @@ dist/
 *.egg-info/
 
 # documentation output
-sphinx/_build
-sphinx/_static
-sphinx/_template
+docs/_build
+docs/_template
 
 #links
 *.lnk
