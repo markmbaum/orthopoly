@@ -1,6 +1,6 @@
 # orthopoly
 
-[![docs](https://img.shields.io/badge/docs-stable-blue)](https://markmbaum.github.io/orthopoly/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8093092.svg)](https://doi.org/10.5281/zenodo.8093092) [![Downloads](https://pepy.tech/badge/orthopoly)](https://pepy.tech/project/orthopoly)
+[![docs](https://img.shields.io/badge/docs-stable-blue)](https://markmbaum.github.io/orthopoly/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8093092.svg)](https://doi.org/10.5281/zenodo.8093092) ![Downloads](https://static.pepy.tech/badge/orthopoly)
 
 This is a package for using sets of orthogonal functions/polynomials. It includes Chebyshev, Legendre, and Gegenbauer polynomials. It also has real, two-dimensional spherical harmonics. It was a side project and you can use it almost however you like. **Documentation** is available [**here**](https://markmbaum.github.io/orthopoly).
 
